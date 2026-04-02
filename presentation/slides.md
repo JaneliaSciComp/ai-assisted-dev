@@ -187,16 +187,49 @@ Each vendor is converging on multiple surfaces — but the sweet spots differ.
 
 One capability, three interfaces:
 
-```mermaid
-graph TB
-    C[Codex Capability] --> Cloud[Codex Cloud Agent]
-    C --> CLI[Codex CLI]
-    C --> App[Codex App]
+<svg viewBox="0 0 700 310" xmlns="http://www.w3.org/2000/svg" class="w-full mt-2">
+  <defs>
+    <marker id="ah5" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#666"/>
+    </marker>
+  </defs>
+  <!-- Codex Capability -->
+  <rect x="270" y="0" width="160" height="36" rx="6" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="350" y="22" font-family="sans-serif" font-size="12px" font-weight="bold" text-anchor="middle">Codex Capability</text>
+  <!-- Arrow → Cloud -->
+  <line x1="300" y1="36" x2="120" y2="68" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah5)"/>
+  <!-- Arrow → CLI -->
+  <line x1="350" y1="36" x2="350" y2="68" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah5)"/>
+  <!-- Arrow → App -->
+  <line x1="400" y1="36" x2="580" y2="68" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah5)"/>
 
-    Cloud --- CD[Remote worker<br/>Runs in OpenAI-managed environments<br/>Background tasks, parallel execution<br/>Works against your repos]
-    CLI --- CLID[Local terminal interface<br/>Reads, edits, runs code in your directory<br/><em>Also</em> launches cloud tasks<br/>= local pair programmer + cloud console]
-    App --- AD[Desktop command center<br/>Supervise parallel Codex threads<br/>Built-in worktrees, Git, automations<br/>Organize work across projects]
-```
+  <!-- Cloud Agent -->
+  <rect x="20" y="70" width="160" height="36" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="100" y="92" font-family="sans-serif" font-size="11px" font-weight="bold" text-anchor="middle">Codex Cloud Agent</text>
+  <!-- Cloud description -->
+  <text x="100" y="125" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">Remote worker</text>
+  <text x="100" y="138" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">OpenAI-managed environments</text>
+  <text x="100" y="151" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">Background tasks, parallel execution</text>
+  <text x="100" y="164" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">Works against your repos</text>
+
+  <!-- CLI -->
+  <rect x="250" y="70" width="160" height="36" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="330" y="92" font-family="sans-serif" font-size="11px" font-weight="bold" text-anchor="middle">Codex CLI</text>
+  <!-- CLI description -->
+  <text x="330" y="125" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">Local terminal interface</text>
+  <text x="330" y="138" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">Reads, edits, runs code in your dir</text>
+  <text x="330" y="151" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">Also launches cloud tasks</text>
+  <text x="330" y="164" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">= local pair programmer + cloud console</text>
+
+  <!-- App -->
+  <rect x="500" y="70" width="160" height="36" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="580" y="92" font-family="sans-serif" font-size="11px" font-weight="bold" text-anchor="middle">Codex App</text>
+  <!-- App description -->
+  <text x="580" y="125" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">Desktop command center</text>
+  <text x="580" y="138" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">Supervise parallel Codex threads</text>
+  <text x="580" y="151" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">Built-in worktrees, Git, automations</text>
+  <text x="580" y="164" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">Organize work across projects</text>
+</svg>
 
 <div class="text-xs opacity-50 absolute bottom-4 right-8">
 <a href="https://developers.openai.com/codex">developers.openai.com/codex</a>
@@ -204,9 +237,18 @@ graph TB
 
 ---
 
-# Claude: Comparison of Two Surfaces
+# Claude's Two Surfaces → Same Engine, Different UX
 
-<!-- TODO: Add screenshot(s) showing Claude Code CLI and/or Cowork desktop -->
+<div class="relative mt-4" style="height: 420px;">
+  <img src="/images/claude-code-screenshot.png" class="absolute rounded shadow-lg border border-gray-600" style="left: 60px; top: 0px; width: 380px; z-index: 1;" />
+  <div class="absolute text-sm font-bold opacity-70" style="left: 195px; top: 290px; z-index: 1;">Claude Code (CLI)</div>
+  <img src="/images/cowork-screenshot.png" class="absolute rounded shadow-lg border border-gray-600" style="left: 380px; top: 50px; width: 380px; z-index: 2;" />
+  <div class="absolute text-sm font-bold opacity-70" style="left: 510px; top: 340px; z-index: 2;">Cowork (Desktop)</div>
+</div>
+
+---
+
+# Claude: Comparison of Two Surfaces
 
 <div class="flex gap-8 items-center">
 <div class="flex-1">
@@ -292,14 +334,44 @@ Users approve **93%** of permission prompts — approval fatigue is real.
 
 A two-layer classifier system instead of "approve everything" or "block everything":
 
-```mermaid
-graph LR
-    TO[Tool Output] --> IL[Input Layer:<br/>Prompt Injection Probe]
-    IL -->|warns| C[Claude]
-    C -->|action| OL[Output Layer:<br/>Transcript Classifier]
-    OL -->|allow| E[Execute]
-    OL -->|block + explain| C
-```
+<svg viewBox="0 0 700 90" xmlns="http://www.w3.org/2000/svg" class="w-full mt-2">
+  <defs>
+    <marker id="ah4" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#666"/>
+    </marker>
+  </defs>
+  <!-- Tool Output -->
+  <rect x="0" y="28" width="90" height="36" rx="6" fill="#f3f4f6" stroke="#999" stroke-width="1.5"/>
+  <text x="45" y="50" font-family="sans-serif" font-size="10px" text-anchor="middle">Tool Output</text>
+  <!-- Arrow → Input Layer -->
+  <line x1="90" y1="46" x2="118" y2="46" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah4)"/>
+  <!-- Input Layer -->
+  <rect x="120" y="20" width="130" height="52" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="185" y="42" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Input Layer:</text>
+  <text x="185" y="56" font-family="sans-serif" font-size="9px" text-anchor="middle">Prompt Injection Probe</text>
+  <!-- Arrow → Claude -->
+  <line x1="250" y1="46" x2="278" y2="46" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah4)"/>
+  <text x="264" y="38" font-family="sans-serif" font-size="8px" fill="#666" text-anchor="middle">warns</text>
+  <!-- Claude -->
+  <rect x="280" y="28" width="70" height="36" rx="6" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="315" y="50" font-family="sans-serif" font-size="11px" font-weight="bold" text-anchor="middle">Claude</text>
+  <!-- Arrow → Output Layer (action) -->
+  <line x1="350" y1="38" x2="408" y2="38" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah4)"/>
+  <text x="379" y="30" font-family="sans-serif" font-size="8px" fill="#666" text-anchor="middle">action</text>
+  <!-- Arrow ← Output Layer (block + explain) -->
+  <line x1="410" y1="56" x2="352" y2="56" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah4)"/>
+  <text x="379" y="70" font-family="sans-serif" font-size="8px" fill="#666" text-anchor="middle">block + explain</text>
+  <!-- Output Layer -->
+  <rect x="410" y="20" width="130" height="52" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="475" y="42" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Output Layer:</text>
+  <text x="475" y="56" font-family="sans-serif" font-size="9px" text-anchor="middle">Transcript Classifier</text>
+  <!-- Arrow → Execute -->
+  <line x1="540" y1="46" x2="578" y2="46" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah4)"/>
+  <text x="559" y="38" font-family="sans-serif" font-size="8px" fill="#666" text-anchor="middle">allow</text>
+  <!-- Execute -->
+  <rect x="580" y="28" width="80" height="36" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="620" y="50" font-family="sans-serif" font-size="11px" font-weight="bold" text-anchor="middle">Execute</text>
+</svg>
 
 **What it catches:** scope escalation, credential exploration, unauthorized data sharing, security bypass attempts
 
@@ -319,12 +391,34 @@ Anthropic's Prithvi Rajasekaran on building long-running coding agents:
 
 A single agent evaluating its own work is too optimistic. Solution: **three separate agents**, inspired by GANs:
 
-```mermaid
-graph LR
-    P[Agent 1:<br/>Planner] -->|spec| G[Agent 2:<br/>Generator]
-    G -->|code| E[Agent 3:<br/>Evaluator]
-    E -->|critique| G
-```
+<svg viewBox="0 0 650 100" xmlns="http://www.w3.org/2000/svg" class="w-full mt-2">
+  <defs>
+    <marker id="ah3" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#666"/>
+    </marker>
+  </defs>
+  <!-- Planner -->
+  <rect x="10" y="25" width="140" height="50" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="80" y="44" font-family="sans-serif" font-size="12px" font-weight="bold" text-anchor="middle">Agent 1:</text>
+  <text x="80" y="60" font-family="sans-serif" font-size="12px" text-anchor="middle">Planner</text>
+  <!-- Arrow: Planner → Generator -->
+  <line x1="150" y1="50" x2="238" y2="50" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah3)"/>
+  <text x="194" y="42" font-family="sans-serif" font-size="9px" fill="#666" text-anchor="middle">spec</text>
+  <!-- Generator -->
+  <rect x="240" y="25" width="140" height="50" rx="6" fill="#e0e7ff" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="310" y="44" font-family="sans-serif" font-size="12px" font-weight="bold" text-anchor="middle">Agent 2:</text>
+  <text x="310" y="60" font-family="sans-serif" font-size="12px" text-anchor="middle">Generator</text>
+  <!-- Arrow: Generator → Evaluator -->
+  <line x1="380" y1="42" x2="468" y2="42" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah3)"/>
+  <text x="424" y="34" font-family="sans-serif" font-size="9px" fill="#666" text-anchor="middle">code</text>
+  <!-- Arrow: Evaluator → Generator (critique) -->
+  <line x1="470" y1="60" x2="382" y2="60" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah3)"/>
+  <text x="424" y="76" font-family="sans-serif" font-size="9px" fill="#666" text-anchor="middle">critique</text>
+  <!-- Evaluator -->
+  <rect x="470" y="25" width="140" height="50" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="540" y="44" font-family="sans-serif" font-size="12px" font-weight="bold" text-anchor="middle">Agent 3:</text>
+  <text x="540" y="60" font-family="sans-serif" font-size="12px" text-anchor="middle">Evaluator</text>
+</svg>
 
 - One agent alone ($9, 20 min) → broken, unusable code
 - Three-agent harness ($200, 6 hrs) → fully working applications
@@ -369,15 +463,47 @@ OpenAI's team spent 20% of their week manually cleaning up "AI slop." That didn'
 
 Their solution: **encode taste as rules, then automate enforcement.**
 
-```mermaid
-graph LR
-    GP[Golden Principles] --> L[Custom Linters]
-    GP --> ST[Structural Tests]
-    L --> BG[Recurring Agent Tasks]
-    ST --> BG
-    BG -->|scan for drift| PR[Cleanup PRs]
-    PR -->|most reviewed in < 1 min| M[Auto-merge]
-```
+<svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" class="w-full mt-2">
+  <defs>
+    <marker id="ah6" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#666"/>
+    </marker>
+  </defs>
+  <!-- Golden Principles -->
+  <rect x="0" y="22" width="120" height="50" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="60" y="44" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Golden</text>
+  <text x="60" y="58" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Principles</text>
+  <!-- Arrow → Custom Linters -->
+  <line x1="120" y1="36" x2="148" y2="36" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah6)"/>
+  <!-- Arrow → Structural Tests -->
+  <line x1="120" y1="58" x2="148" y2="58" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah6)"/>
+  <!-- Custom Linters -->
+  <rect x="150" y="16" width="110" height="30" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="205" y="35" font-family="sans-serif" font-size="10px" text-anchor="middle">Custom Linters</text>
+  <!-- Structural Tests -->
+  <rect x="150" y="50" width="110" height="30" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="205" y="69" font-family="sans-serif" font-size="10px" text-anchor="middle">Structural Tests</text>
+  <!-- Arrow Linters → Agent Tasks -->
+  <line x1="260" y1="31" x2="298" y2="42" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah6)"/>
+  <!-- Arrow Tests → Agent Tasks -->
+  <line x1="260" y1="65" x2="298" y2="52" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah6)"/>
+  <!-- Recurring Agent Tasks -->
+  <rect x="300" y="26" width="130" height="40" rx="6" fill="#e0e7ff" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="365" y="42" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Recurring</text>
+  <text x="365" y="56" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Agent Tasks</text>
+  <!-- Arrow → Cleanup PRs -->
+  <line x1="430" y1="46" x2="468" y2="46" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah6)"/>
+  <text x="449" y="38" font-family="sans-serif" font-size="8px" fill="#666" text-anchor="middle">scan for drift</text>
+  <!-- Cleanup PRs -->
+  <rect x="470" y="26" width="100" height="40" rx="6" fill="#f3f4f6" stroke="#999" stroke-width="1.5"/>
+  <text x="520" y="50" font-family="sans-serif" font-size="10px" text-anchor="middle">Cleanup PRs</text>
+  <!-- Arrow → Auto-merge -->
+  <line x1="570" y1="46" x2="608" y2="46" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah6)"/>
+  <text x="589" y="36" font-family="sans-serif" font-size="7px" fill="#666" text-anchor="middle">reviewed &lt;1 min</text>
+  <!-- Auto-merge -->
+  <rect x="610" y="28" width="80" height="36" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="650" y="50" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Auto-merge</text>
+</svg>
 
 - Enforce architecture mechanically: dependency directions, naming conventions, file size limits
 - Linter error messages written as remediation instructions for agents
@@ -442,14 +568,39 @@ Patterns for AI-Assisted Development
 
 The single highest-leverage pattern across all harnesses:
 
-```mermaid
-graph LR
-    E[Explore] -->|understand the problem| P[Plan]
-    P -->|write implementation plan| C[Code]
-    C -->|implement the plan| V[Verify]
-    V -->|tests pass?| D[Done]
-    V -->|tests fail| C
-```
+<svg viewBox="0 0 700 80" xmlns="http://www.w3.org/2000/svg" class="w-full mt-2">
+  <defs>
+    <marker id="ah7" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#666"/>
+    </marker>
+  </defs>
+  <!-- Explore -->
+  <rect x="10" y="15" width="100" height="36" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="60" y="37" font-family="sans-serif" font-size="12px" font-weight="bold" text-anchor="middle">Explore</text>
+  <!-- Arrow → Plan -->
+  <line x1="110" y1="33" x2="148" y2="33" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah7)"/>
+  <!-- Plan -->
+  <rect x="150" y="15" width="100" height="36" rx="6" fill="#e0e7ff" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="200" y="37" font-family="sans-serif" font-size="12px" font-weight="bold" text-anchor="middle">Plan</text>
+  <!-- Arrow → Code -->
+  <line x1="250" y1="33" x2="288" y2="33" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah7)"/>
+  <!-- Code -->
+  <rect x="290" y="15" width="100" height="36" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="340" y="37" font-family="sans-serif" font-size="12px" font-weight="bold" text-anchor="middle">Code</text>
+  <!-- Arrow → Verify -->
+  <line x1="390" y1="33" x2="428" y2="33" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah7)"/>
+  <!-- Verify -->
+  <rect x="430" y="15" width="100" height="36" rx="6" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
+  <text x="480" y="37" font-family="sans-serif" font-size="12px" font-weight="bold" text-anchor="middle">Verify</text>
+  <!-- Arrow → Done -->
+  <line x1="530" y1="33" x2="568" y2="33" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah7)"/>
+  <!-- Done -->
+  <rect x="570" y="15" width="80" height="36" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="610" y="37" font-family="sans-serif" font-size="12px" font-weight="bold" text-anchor="middle">Done</text>
+  <!-- Arrow: Verify → Code (tests fail, curved below) -->
+  <path d="M 460,51 C 460,72 360,72 340,51" fill="none" stroke="#e11d48" stroke-width="1.5" marker-end="url(#ah7)"/>
+  <text x="400" y="72" font-family="sans-serif" font-size="8px" fill="#e11d48" text-anchor="middle">tests fail</text>
+</svg>
 
 **Explore** — Read code, ask questions, understand the system. Use Plan Mode or Ask Mode.
 
@@ -548,12 +699,38 @@ Context Rot, Model Degradation, and the Feedback Loop
 
 As a session grows, the model's effective intelligence degrades — not because it gets dumber, but because signal gets buried in noise.
 
-```mermaid
-graph LR
-    F[Fresh session<br/>high signal] -->|task outputs accumulate| M[Mid session<br/>compaction triggers]
-    M -->|summaries replace detail| L[Late session<br/>original intent blurred]
-    L -->|wrong assumptions compound| D[Drift<br/>model works against you]
-```
+<svg viewBox="0 0 700 70" xmlns="http://www.w3.org/2000/svg" class="w-full mt-2">
+  <defs>
+    <marker id="ah8" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#666"/>
+    </marker>
+  </defs>
+  <!-- Fresh session -->
+  <rect x="0" y="10" width="120" height="42" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="60" y="27" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Fresh session</text>
+  <text x="60" y="41" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">high signal</text>
+  <!-- Arrow -->
+  <line x1="120" y1="31" x2="168" y2="31" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah8)"/>
+  <text x="144" y="24" font-family="sans-serif" font-size="7px" fill="#666" text-anchor="middle">outputs accumulate</text>
+  <!-- Mid session -->
+  <rect x="170" y="10" width="130" height="42" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="235" y="27" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Mid session</text>
+  <text x="235" y="41" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">compaction triggers</text>
+  <!-- Arrow -->
+  <line x1="300" y1="31" x2="348" y2="31" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah8)"/>
+  <text x="324" y="24" font-family="sans-serif" font-size="7px" fill="#666" text-anchor="middle">summaries replace detail</text>
+  <!-- Late session -->
+  <rect x="350" y="10" width="140" height="42" rx="6" fill="#fed7aa" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="420" y="27" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Late session</text>
+  <text x="420" y="41" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">original intent blurred</text>
+  <!-- Arrow -->
+  <line x1="490" y1="31" x2="538" y2="31" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah8)"/>
+  <text x="514" y="24" font-family="sans-serif" font-size="7px" fill="#666" text-anchor="middle">assumptions compound</text>
+  <!-- Drift -->
+  <rect x="540" y="10" width="130" height="42" rx="6" fill="#fecaca" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="605" y="27" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Drift</text>
+  <text x="605" y="41" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">model works against you</text>
+</svg>
 
 **What rots:**
 - Your original intent and constraints get summarized away
