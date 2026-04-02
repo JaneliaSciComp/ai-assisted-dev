@@ -15,9 +15,9 @@ mdc: true
 Harnesses, Frontier Models, and What's Possible
 
 <div class="pt-12">
-  <span class="text-sm opacity-50">
-    Janelia Research Campus — Scientific Software Group
-  </span>
+  <div class="text-lg">Bill Katz</div>
+  <div class="text-sm opacity-70">Scientific Computing Software</div>
+  <div class="text-sm opacity-50">HHMI Janelia Research Campus</div>
 </div>
 
 ---
@@ -26,7 +26,8 @@ Harnesses, Frontier Models, and What's Possible
 
 1. **The Ecosystem** — Frontier models, harnesses, and what's available at Janelia
 2. **Approaches** — Common patterns for AI-assisted development
-3. **Extraordinary Examples** — What people are actually building
+3. **Issues** — Context rot, model degradation, and the feedback loop
+4. **Extraordinary Examples** — What people are actually building
 
 ---
 layout: section
@@ -421,11 +422,192 @@ These patterns apply equally to Claude Code, Gemini CLI, and other harnesses.
 layout: section
 ---
 
-# Part III: Extraordinary Examples
+# Part III: Issues
+
+Context Rot, Model Degradation, and the Feedback Loop
+
+---
+
+# Context Rot: Death by a Thousand Tokens
+
+As a session grows, the model's effective intelligence degrades — not because it gets dumber, but because signal gets buried in noise.
+
+```mermaid
+graph LR
+    F[Fresh session<br/>high signal] -->|task outputs accumulate| M[Mid session<br/>compaction triggers]
+    M -->|summaries replace detail| L[Late session<br/>original intent blurred]
+    L -->|wrong assumptions compound| D[Drift<br/>model works against you]
+```
+
+**What rots:**
+- Your original intent and constraints get summarized away
+- Failed approaches stay in context, biasing toward the same mistakes
+- Tool outputs (file contents, test results) crowd out your instructions
+- After compaction, the model works from a summary of a summary
+
+**What helps:**
+- Start fresh (`/clear`) for genuinely new tasks
+- Keep sessions focused on one goal
+- Front-load important constraints in CLAUDE.md (survives compaction)
+- Use subagents for exploration so your main context stays clean
+
+---
+
+# Context Rot in Practice
+
+A real pattern that wastes hours:
+
+<svg viewBox="0 0 720 195" xmlns="http://www.w3.org/2000/svg" class="w-full mt-2">
+  <style>
+    .box { rx: 6; ry: 6; stroke: #999; stroke-width: 1.5; }
+    .label { font-family: sans-serif; font-size: 11px; text-anchor: middle; dominant-baseline: central; }
+    .arrow { fill: none; stroke: #666; stroke-width: 1.5; marker-end: url(#arrowhead); }
+    .warn-box { rx: 6; ry: 6; stroke: #e67e22; stroke-width: 2; }
+    .fail-box { rx: 6; ry: 6; stroke: #e74c3c; stroke-width: 2; }
+  </style>
+  <defs>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#666"/>
+    </marker>
+  </defs>
+
+  <!-- Column 1: down -->
+  <rect x="20" y="10" width="180" height="32" class="box" fill="#dbeafe"/>
+  <text x="110" y="26" class="label" font-weight="bold">Task: "Fix login bug"</text>
+  <line x1="110" y1="42" x2="110" y2="56" class="arrow"/>
+
+  <rect x="20" y="56" width="180" height="32" class="box" fill="#f3f4f6"/>
+  <text x="110" y="72" class="label">Agent reads 12 files</text>
+  <line x1="110" y1="88" x2="110" y2="102" class="arrow"/>
+
+  <rect x="20" y="102" width="180" height="32" class="box" fill="#fee2e2"/>
+  <text x="110" y="118" class="label">Fix #1 — wrong approach</text>
+  <line x1="110" y1="134" x2="110" y2="148" class="arrow"/>
+
+  <rect x="20" y="148" width="180" height="32" class="box" fill="#fef9c3"/>
+  <text x="110" y="164" class="label">You: "No, try X instead"</text>
+
+  <!-- Arrow right from col 1 to col 2 -->
+  <line x1="200" y1="164" x2="270" y2="164" class="arrow"/>
+
+  <!-- Column 2: up -->
+  <rect x="270" y="148" width="180" height="32" class="box" fill="#f3f4f6"/>
+  <text x="360" y="164" class="label">Agent reads 8 more files</text>
+  <line x1="360" y1="148" x2="360" y2="134" class="arrow"/>
+
+  <rect x="270" y="102" width="180" height="32" class="box" fill="#fee2e2"/>
+  <text x="360" y="118" class="label">Fix #2 — closer but off</text>
+  <line x1="360" y1="102" x2="360" y2="88" class="arrow"/>
+
+  <rect x="270" y="56" width="180" height="32" class="box" fill="#fef9c3"/>
+  <text x="360" y="72" class="label">You: "Issue is in auth.ts"</text>
+
+  <!-- Arrow right from col 2 to col 3 -->
+  <line x1="450" y1="72" x2="520" y2="72" class="arrow"/>
+
+  <!-- Column 3: down -->
+  <rect x="520" y="56" width="180" height="32" class="warn-box" fill="#ffedd5"/>
+  <text x="610" y="72" class="label" font-weight="bold">Compaction triggers</text>
+  <line x1="610" y1="88" x2="610" y2="102" class="arrow"/>
+
+  <rect x="520" y="102" width="180" height="32" class="fail-box" fill="#fecaca"/>
+  <text x="610" y="118" class="label" font-weight="bold">Fix #3 — repeats #1</text>
+</svg>
+
+Context is now ~80% failed attempts. The model is optimizing against polluted history.
+
+**The fix:** After two failed corrections, `/clear` and write a single, precise prompt incorporating what you've learned. Five minutes of prompt writing beats thirty minutes of correction loops.
+
+---
+
+# Model Degradation: Why Does It Feel Dumber Sometimes?
+
+The model is a black box. When quality seems to drop, the cause is rarely what you think.
+
+**It's probably not the model:**
+- **Context pollution** — noise accumulated over a long session drowns out your intent
+- **Prompt ambiguity** — your request is clear to you but underspecified for the model
+- **Compaction artifacts** — after auto-compaction, the model lost critical details
+- **Task complexity creep** — what started small became multi-file, multi-concern
+
+**It might be the model:**
+- **Model version changes** — providers update models without notice; behavior shifts
+- **Capacity-dependent routing** — some providers route to smaller models under load
+- **Regression in specific domains** — a new model version may improve overall but regress on your particular use case
+
+**It's almost never:**
+- "They nerfed it" — conspiracy theories about intentional degradation
+- "It worked yesterday" — your context yesterday was different
+
+When in doubt: start a fresh session and test with a clean prompt.
+
+---
+
+# The Feedback Loop: Anthropic Is Listening
+
+Anthropic tracks user satisfaction signals from conversations — including frustration.
+
+When you curse at Claude, that interaction is flagged as a **negative satisfaction signal**. Claude doesn't change its behavior in response to cursing, but the data feeds back into model evaluation and training priorities.
+
+What Anthropic captures:
+- Thumbs up/down on responses
+- Conversation-level sentiment (including profanity as frustration signal)
+- Retry and regeneration patterns
+- Session abandonment timing
+
+**Why this matters for developers:**
+- Your frustration literally shapes the next model version
+- Specific, constructive feedback (thumbs down + explanation) is far more actionable than cursing
+- The 👎 button is your most powerful tool for improving AI coding assistants
+
+*The models are trained on what we collectively tolerate and reject.*
+
+---
+layout: section
+---
+
+# Part IV: Extraordinary Examples
 
 What People Are Actually Building
 
 ---
+
+<style scoped>
+h1 { font-size: 1.3em !important; }
+p, li { font-size: 0.85em; }
+ul { margin-top: 0.1em; }
+p { margin-bottom: 0.2em; }
+</style>
+
+# The Claude Code Leak → Agent-Driven Rewrites
+
+A missing `.npmignore` shipped 512K lines of unobfuscated TypeScript in the npm package. What happened next:
+
+**The leak (March 31, 2026):**
+- Anthropic: "a release packaging issue caused by human error, not a security breach"
+- Sigrid Jin (@realsigridjin), exhausted after running two Korean hackathons in SF, cloned the repo, went to sleep
+- Woke up to massive attention — and his girlfriend (a copyright lawyer) begging him to take it down
+
+**The pivot:**
+- Team decision: "What if we have agents **rewrite the entire thing in Python**? Surely that's more legal..."
+- Clean-room Python rewrite using **oh-my-codex** (OmX), an AI workflow tool built on OpenAI Codex
+- Board a plane to South Korea
+- Mid-flight, one team member decides Python is too slow — starts rewriting **all of it into Rust**
+
+**The result: "claw-code"**
+- **50K GitHub stars in two hours** — fastest-growing repo in GitHub history
+- Anthropic filed **8,100+ DMCA takedowns**
+- The knock-off now has more stars than the original Claude Code repo
+
+---
+
+<style scoped>
+h1 { font-size: 1.3em !important; }
+table { font-size: 0.78em; }
+table td, table th { padding: 0.25em 0.8em; }
+table tr:nth-child(even) { background: rgba(255,255,255,0.05); }
+p { font-size: 0.8em; margin-bottom: 0.3em; }
+</style>
 
 # OpenAI's Zero-Handwritten-Code Experiment
 
@@ -439,11 +621,9 @@ An OpenAI team built and shipped a product with **0 lines of manually-written co
 | Engineers | 3 (later 7) |
 | Throughput | 3.5 PRs / engineer / day |
 | Estimated speedup | ~10x vs hand-coding |
-| Duration | 5 months (from empty repo) |
+| Duration | 5 months (from empty repo, ~Sep 2025 – Feb 2026) |
 
 The product has internal daily users and external alpha testers. It ships, deploys, breaks, and gets fixed — all by agents.
-
-*"Humans steer. Agents execute."* — Ryan Lopopolo, OpenAI
 
 Engineers spent 20% of time cleaning up "AI slop" → solved by automated "garbage collection" (golden principles + recurring agent cleanup tasks).
 
