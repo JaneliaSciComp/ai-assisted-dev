@@ -364,6 +364,60 @@ From OpenAI's internal engineering teams — but these generalize across harness
 </div>
 
 ---
+
+# The Explore → Plan → Code → Verify Workflow
+
+The single highest-leverage pattern across all harnesses:
+
+```mermaid
+graph LR
+    E[Explore] -->|understand the problem| P[Plan]
+    P -->|write implementation plan| C[Code]
+    C -->|implement the plan| V[Verify]
+    V -->|tests pass?| D[Done]
+    V -->|tests fail| C
+```
+
+**Explore** — Read code, ask questions, understand the system. Use Plan Mode or Ask Mode.
+
+**Plan** — Create an implementation plan *before* writing code. Edit the plan yourself if needed.
+
+**Code** — Let the agent implement against the plan. Reference specific files and patterns.
+
+**Verify** — Give the agent a way to check its own work: tests, screenshots, linters, build commands. This is the single highest-leverage thing you can do.
+
+*Skip the plan for small, obvious tasks. Use it when scope is unclear or changes span multiple files.*
+
+<div class="text-xs opacity-50 absolute bottom-4 right-8">
+<a href="https://code.claude.com/docs/en/best-practices">code.claude.com/docs/en/best-practices</a>
+</div>
+
+---
+
+# Common Failure Patterns (and Fixes)
+
+Recognizing these early saves hours:
+
+**The kitchen sink session** — One task, then something unrelated, then back to the first. Context fills with noise.
+→ `/clear` between unrelated tasks.
+
+**Correcting over and over** — Claude does it wrong, you correct, still wrong, correct again. Context polluted with failed approaches.
+→ After two failed corrections, `/clear` and write a better initial prompt.
+
+**The over-specified CLAUDE.md** — Too long, Claude ignores half of it. Important rules get lost.
+→ Ruthlessly prune. If Claude already does it correctly without the rule, delete it.
+
+**The trust-then-verify gap** — Plausible-looking code that doesn't handle edge cases.
+→ Always provide verification. If you can't verify it, don't ship it.
+
+**The infinite exploration** — "Investigate this" without scoping. Claude reads hundreds of files.
+→ Scope narrowly, or delegate to a subagent so exploration doesn't consume your main context.
+
+<div class="text-xs opacity-50 absolute bottom-4 right-8">
+<a href="https://code.claude.com/docs/en/best-practices">code.claude.com/docs/en/best-practices</a>
+</div>
+
+---
 layout: section
 ---
 

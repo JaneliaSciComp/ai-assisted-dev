@@ -62,6 +62,7 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 
 *Guides, patterns, and strategies for effective AI-assisted coding.*
 
+- [Best Practices for Claude Code](https://code.claude.com/docs/en/best-practices) — Comprehensive guide from Anthropic: explore-plan-code-verify workflow, CLAUDE.md best practices, context management, subagents, common failure patterns. `tags: best-practices, anthropic, claude-code, workflow`
 - [How OpenAI Uses Codex](https://cdn.openai.com/pdf/6a2631dc-783e-479b-b1a4-af0cfbd38630/how-openai-uses-codex.pdf) — OpenAI's internal use cases and best practices from their own engineering teams: code understanding, refactoring, performance optimization, testing, staying in flow. `tags: best-practices, openai, codex, use-cases`
 
 ---
