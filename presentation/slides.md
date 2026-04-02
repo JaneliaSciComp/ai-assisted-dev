@@ -3,7 +3,7 @@ theme: default
 title: "AI-Assisted Software Development"
 info: |
   Janelia Research Campus — Scientific Software Group
-  A survey of harnesses, frontier models, and extraordinary examples
+  A survey of harnesses, frontier models, common practices, issues, and extraordinary examples
 drawings:
   persist: false
 transition: none
@@ -12,7 +12,7 @@ mdc: true
 
 # AI-Assisted Software Development
 
-Harnesses, Frontier Models, and What's Possible
+Harnesses, Frontier Models, Common Practices, Issues, and What's Possible
 
 <div class="pt-12">
   <div class="text-lg">Bill Katz</div>
@@ -69,6 +69,8 @@ Frontier Models & Harnesses
 All support tool use, MCP, and agentic workflows.
 
 Introduced: Claude Code (Feb 2025), OpenAI Codex (May 2025), Gemini CLI (June 2025)
+
+**Early 2026**: Agentic systems (run in parallel) with advances in both models and harnesses, have **changed** the software development landscape.
 
 ---
 
@@ -639,6 +641,12 @@ The single highest-leverage pattern across all harnesses:
 
 ---
 
+# Claude Hierarchy of Instructions
+
+<img src="/images/claude-hierarchy-instructions.png" class="mx-auto mt-auto mb-0" style="max-height: 92%; max-width: 98%; object-fit: contain;" />
+
+---
+
 # Common Failure Patterns (and Fixes)
 
 Recognizing these early saves hours:
@@ -707,6 +715,58 @@ These patterns apply equally to Claude Code, Gemini CLI, and other harnesses.
 </div>
 
 ---
+
+# Case Study: gstack — A Shareable Skills Library
+
+<div class="text-sm">
+
+Garry Tan (YC CEO) open-sourced **23 slash-command skills** built on the **SKILL.md standard** — works with any agent that supports it (Codex CLI, Claude Code, Gemini CLI, Cursor, Factory Droid).
+
+</div>
+
+<div class="flex gap-6 mt-1">
+<div class="flex-1">
+
+**Think → Plan → Build → Review → Test → Ship → Reflect**
+
+| Role | Skill |
+|---|---|
+| YC Office Hours | `/office-hours` — reframes problem before coding |
+| CEO / Founder | `/plan-ceo-review` — challenges scope |
+| Eng Manager | `/plan-eng-review` — locks architecture |
+| Staff Engineer | `/review` — finds bugs that pass CI |
+| QA Lead | `/qa` — real browser testing |
+| Release Engineer | `/ship` — tests, coverage audit, PR |
+| Security Officer | `/cso` — OWASP + STRIDE audits |
+
+</div>
+<div class="flex-1">
+
+**Why it matters:**
+
+- Skills are **Markdown files** in `.agents/skills/` — portable, forkable, composable
+- Agent-agnostic via the **SKILL.md standard** (`--host codex`, `--host auto`)
+- Encodes **process as code** — the sprint structure is the product
+- Supports 10–15 parallel agent sessions
+- 62K+ stars, 8K+ forks, MIT licensed
+
+**The pattern:** Capture your team's engineering taste once, let agents enforce it on every line of code.
+
+</div>
+</div>
+
+<div class="text-xs opacity-50 absolute bottom-4 right-8">
+<a href="https://github.com/garrytan/gstack">github.com/garrytan/gstack</a>
+</div>
+
+<style scoped>
+p, li { font-size: 0.85em; line-height: 1.4; margin: 0.15em 0; }
+table { font-size: 0.8em; }
+th, td { padding: 0.2em 0.5em; }
+h1 { margin-bottom: 0.1em; }
+</style>
+
+---
 layout: section
 ---
 
@@ -720,7 +780,7 @@ Context Rot, Model Degradation, and the Feedback Loop
 
 As a session grows, the model's effective intelligence degrades — not because it gets dumber, but because signal gets buried in noise.
 
-<svg viewBox="0 0 700 70" xmlns="http://www.w3.org/2000/svg" class="w-full mt-2">
+<svg viewBox="0 0 700 80" xmlns="http://www.w3.org/2000/svg" class="w-full mt-2">
   <defs>
     <marker id="ah8" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
       <polygon points="0 0, 8 3, 0 6" fill="#666"/>
@@ -730,40 +790,49 @@ As a session grows, the model's effective intelligence degrades — not because 
   <rect x="0" y="10" width="120" height="42" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
   <text x="60" y="27" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Fresh session</text>
   <text x="60" y="41" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">high signal</text>
-  <!-- Arrow -->
+  <!-- Arrow + label below -->
   <line x1="120" y1="31" x2="168" y2="31" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah8)"/>
-  <text x="144" y="24" font-family="sans-serif" font-size="7px" fill="#666" text-anchor="middle">outputs accumulate</text>
+  <text x="144" y="66" font-family="sans-serif" font-size="7px" fill="#666" text-anchor="middle">outputs accumulate</text>
   <!-- Mid session -->
   <rect x="170" y="10" width="130" height="42" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
   <text x="235" y="27" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Mid session</text>
   <text x="235" y="41" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">compaction triggers</text>
-  <!-- Arrow -->
+  <!-- Arrow + label below -->
   <line x1="300" y1="31" x2="348" y2="31" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah8)"/>
-  <text x="324" y="24" font-family="sans-serif" font-size="7px" fill="#666" text-anchor="middle">summaries replace detail</text>
+  <text x="324" y="66" font-family="sans-serif" font-size="7px" fill="#666" text-anchor="middle">summaries replace detail</text>
   <!-- Late session -->
   <rect x="350" y="10" width="140" height="42" rx="6" fill="#fed7aa" stroke="#ea580c" stroke-width="1.5"/>
   <text x="420" y="27" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Late session</text>
   <text x="420" y="41" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">original intent blurred</text>
-  <!-- Arrow -->
+  <!-- Arrow + label below -->
   <line x1="490" y1="31" x2="538" y2="31" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah8)"/>
-  <text x="514" y="24" font-family="sans-serif" font-size="7px" fill="#666" text-anchor="middle">assumptions compound</text>
+  <text x="514" y="66" font-family="sans-serif" font-size="7px" fill="#666" text-anchor="middle">assumptions compound</text>
   <!-- Drift -->
   <rect x="540" y="10" width="130" height="42" rx="6" fill="#fecaca" stroke="#dc2626" stroke-width="1.5"/>
   <text x="605" y="27" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Drift</text>
   <text x="605" y="41" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">model works against you</text>
 </svg>
 
+<div class="flex gap-8 mt-1">
+<div class="flex-1">
+
 **What rots:**
-- Your original intent and constraints get summarized away
-- Failed approaches stay in context, biasing toward the same mistakes
-- Tool outputs (file contents, test results) crowd out your instructions
-- After compaction, the model works from a summary of a summary
+- Original intent and constraints get summarized away
+- Failed approaches stay in context, biasing toward same mistakes
+- Tool outputs crowd out your instructions
+- After compaction: summary of a summary
+
+</div>
+<div class="flex-1">
 
 **What helps:**
 - Start fresh (`/clear`) for genuinely new tasks
 - Keep sessions focused on one goal
-- Front-load important constraints in CLAUDE.md (survives compaction)
-- Use subagents for exploration so your main context stays clean
+- Front-load constraints in CLAUDE.md (survives compaction)
+- Use subagents so main context stays clean
+
+</div>
+</div>
 
 ---
 

@@ -7,6 +7,7 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 - [Harnesses & Tools](#harnesses--tools)
   - [IDE-Integrated](#ide-integrated)
   - [Terminal / Agent-Based](#terminal--agent-based)
+  - [Skills & Extensions](#skills--extensions)
   - [Cloud / Autonomous Agents](#cloud--autonomous-agents)
   - [Spec-Driven Development](#spec-driven-development)
   - [AI-Powered Design & Prototyping](#ai-powered-design--prototyping)
@@ -39,6 +40,13 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 - [Codex (Cloud)](https://openai.com/codex/) — OpenAI's cloud-based async coding agent with sandboxed environments. `tags: cloud, agentic, openai`
 - [Gemini CLI](https://github.com/google-gemini/gemini-cli) — Google's open-source terminal agent with Gemini 2.5 Pro. Free tier: 1K requests/day. `tags: cli, agentic, google, open-source, free`
 - [Aider](https://aider.chat/) — Open-source AI pair programming in the terminal. Works with multiple models. `tags: cli, open-source, multi-model`
+
+### Skills & Extensions
+
+*Shareable skill libraries and configuration packs that extend agent capabilities.*
+
+- [gstack](https://github.com/garrytan/gstack) — Garry Tan's (YC CEO) open-source skill library: 23 slash-command skills encoding a full sprint process (office hours, CEO/eng/design review, QA, ship, security audits). Built on the SKILL.md standard — works across Codex CLI, Claude Code, Gemini CLI, Cursor, Factory Droid. 62K+ stars. `tags: skills, process, open-source, multi-agent`
+- [GitHub Spec Kit](https://github.com/speckit) — Open-source templates for spec-driven development across Copilot, Claude Code, Gemini CLI, Cursor, Windsurf. `tags: specs, templates, open-source, multi-agent`
 
 ### Cloud / Autonomous Agents
 
