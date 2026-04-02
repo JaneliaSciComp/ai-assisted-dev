@@ -321,51 +321,7 @@ Patterns for AI-Assisted Development
 
 ---
 
-# How OpenAI Engineers Actually Use Codex
-
-Seven use cases from OpenAI's internal teams (Security, Frontend, API, Infrastructure):
-
-| Use Case | What they do |
-|---|---|
-| **Code understanding** | Paste a stack trace, ask where the auth flow lives — faster than grep |
-| **Refactoring & migrations** | Swap legacy patterns across dozens of files, open the PR in minutes |
-| **Performance optimization** | Flag hot paths, draft batched queries — "5 min prompt saves 30 min work" |
-| **Test coverage** | Point at low-coverage modules overnight, wake up to unit-test PRs |
-| **Development velocity** | Scaffold boilerplate, triage bugs, ship low-priority fixes from backlog |
-| **Staying in flow** | Fire off drive-by fixes as background tasks, review PRs when free |
-| **Exploration & ideation** | Explore alternative architectures, find similar bugs across codebase |
-
-These patterns apply equally to Claude Code, Gemini CLI, and other harnesses.
-
-<div class="text-xs opacity-50 absolute bottom-4 right-8">
-<a href="https://cdn.openai.com/pdf/6a2631dc-783e-479b-b1a4-af0cfbd38630/how-openai-uses-codex.pdf">OpenAI: "How OpenAI uses Codex" (PDF)</a>
-</div>
-
----
-
-# Best Practices for AI-Assisted Coding
-
-From OpenAI's internal engineering teams — but these generalize across harnesses:
-
-**Start with a plan, then code** — Use "Ask mode" first to generate an implementation plan. Then switch to coding mode with that plan as input. Keeps the agent grounded.
-
-**Structure prompts like GitHub Issues** — Include file paths, component names, diffs, and doc snippets. "Implement this the same way it's done in [module X]" improves results.
-
-**Use the task queue as a backlog** — Fire off tangential ideas, partial work, incidental fixes. No pressure for a full PR in one go. Review when you're back in focus.
-
-**Iterate on the environment, not the prompt** — Build errors? Fix the dev environment config, not the prompt. Startup scripts, env vars, and internet access reduce error rates significantly.
-
-**"Best of N" for hard problems** — Generate multiple responses for a single task, review several iterations, combine the best parts.
-
-**Keep tasks well-scoped** — Sweet spot: tasks that would take you about an hour or a few hundred lines of code.
-
-<div class="text-xs opacity-50 absolute bottom-4 right-8">
-<a href="https://cdn.openai.com/pdf/6a2631dc-783e-479b-b1a4-af0cfbd38630/how-openai-uses-codex.pdf">OpenAI: "How OpenAI uses Codex" (PDF)</a>
-</div>
-
----
-
-# The Explore → Plan → Code → Verify Workflow
+# Claude Best Practices: Explore → Plan → Code → Verify
 
 The single highest-leverage pattern across all harnesses:
 
@@ -415,6 +371,50 @@ Recognizing these early saves hours:
 
 <div class="text-xs opacity-50 absolute bottom-4 right-8">
 <a href="https://code.claude.com/docs/en/best-practices">code.claude.com/docs/en/best-practices</a>
+</div>
+
+---
+
+# OpenAI Best Practices for AI-Assisted Coding
+
+From OpenAI's internal engineering teams — but these generalize across harnesses:
+
+**Start with a plan, then code** — Use "Ask mode" first to generate an implementation plan. Then switch to coding mode with that plan as input. Keeps the agent grounded.
+
+**Structure prompts like GitHub Issues** — Include file paths, component names, diffs, and doc snippets. "Implement this the same way it's done in [module X]" improves results.
+
+**Use the task queue as a backlog** — Fire off tangential ideas, partial work, incidental fixes. No pressure for a full PR in one go. Review when you're back in focus.
+
+**Iterate on the environment, not the prompt** — Build errors? Fix the dev environment config, not the prompt. Startup scripts, env vars, and internet access reduce error rates significantly.
+
+**"Best of N" for hard problems** — Generate multiple responses for a single task, review several iterations, combine the best parts.
+
+**Keep tasks well-scoped** — Sweet spot: tasks that would take you about an hour or a few hundred lines of code.
+
+<div class="text-xs opacity-50 absolute bottom-4 right-8">
+<a href="https://cdn.openai.com/pdf/6a2631dc-783e-479b-b1a4-af0cfbd38630/how-openai-uses-codex.pdf">OpenAI: "How OpenAI uses Codex" (PDF)</a>
+</div>
+
+---
+
+# How OpenAI Engineers Actually Use Codex
+
+Seven use cases from OpenAI's internal teams (Security, Frontend, API, Infrastructure):
+
+| Use Case | What they do |
+|---|---|
+| **Code understanding** | Paste a stack trace, ask where the auth flow lives — faster than grep |
+| **Refactoring & migrations** | Swap legacy patterns across dozens of files, open the PR in minutes |
+| **Performance optimization** | Flag hot paths, draft batched queries — "5 min prompt saves 30 min work" |
+| **Test coverage** | Point at low-coverage modules overnight, wake up to unit-test PRs |
+| **Development velocity** | Scaffold boilerplate, triage bugs, ship low-priority fixes from backlog |
+| **Staying in flow** | Fire off drive-by fixes as background tasks, review PRs when free |
+| **Exploration & ideation** | Explore alternative architectures, find similar bugs across codebase |
+
+These patterns apply equally to Claude Code, Gemini CLI, and other harnesses.
+
+<div class="text-xs opacity-50 absolute bottom-4 right-8">
+<a href="https://cdn.openai.com/pdf/6a2631dc-783e-479b-b1a4-af0cfbd38630/how-openai-uses-codex.pdf">OpenAI: "How OpenAI uses Codex" (PDF)</a>
 </div>
 
 ---
