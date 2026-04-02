@@ -41,6 +41,10 @@ This happens when node_modules were created on a different platform (e.g., Linux
 - Sections mirror the talk structure: Harnesses & Tools, Frontier Models, Approaches, Examples, Articles, Videos, Benchmarks
 - Format for entries: `- [Name](url) — Description. \`tags: tag1, tag2\``
 
+## Slidev Diagrams
+
+Do NOT use Mermaid diagrams in slides.md — they have lazy-rendering issues in Slidev where diagrams fail to render on slide navigation (arrow keys, overview jumps). Use inline SVG instead, which renders immediately and consistently. All font sizes in SVG must use explicit `px` units (e.g., `font-size="11px"` not `font-size="11"`).
+
 ## Web Research
 
 WebFetch is blocked for many domains (medium.com, venturebeat.com, openai.com, etc.) by the sandbox proxy. When WebFetch fails and the **Claude in Chrome extension** is installed and connected, use Chrome as a fallback — navigate to the URL in a Chrome tab and use `get_page_text` or `read_page` to read the content. If Chrome tools are not available, ask the user to install the extension or read the content manually.
