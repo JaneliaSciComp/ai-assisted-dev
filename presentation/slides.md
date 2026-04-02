@@ -767,6 +767,58 @@ h1 { margin-bottom: 0.1em; }
 </style>
 
 ---
+
+# Claude Skills: Progressive Disclosure Architecture
+
+Skills are specialized folders (instructions, scripts, resources) that teach Claude to perform tasks repeatably — available across Claude.ai, Claude Code, and the API.
+
+<svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" class="w-full mt-2">
+  <defs>
+    <marker id="ah9" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#666"/>
+    </marker>
+  </defs>
+  <!-- Step 1 -->
+  <rect x="0" y="20" width="180" height="50" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="90" y="40" font-family="sans-serif" font-size="11px" font-weight="bold" text-anchor="middle">1. Metadata scan</text>
+  <text x="90" y="56" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">~100 tokens per skill</text>
+  <!-- Arrow -->
+  <line x1="180" y1="45" x2="228" y2="45" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah9)"/>
+  <text x="204" y="36" font-family="sans-serif" font-size="8px" fill="#666" text-anchor="middle">match?</text>
+  <!-- Step 2 -->
+  <rect x="230" y="20" width="200" height="50" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="330" y="40" font-family="sans-serif" font-size="11px" font-weight="bold" text-anchor="middle">2. Full instructions</text>
+  <text x="330" y="56" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">&lt;5K tokens — SKILL.md loaded</text>
+  <!-- Arrow -->
+  <line x1="430" y1="45" x2="478" y2="45" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah9)"/>
+  <text x="454" y="36" font-family="sans-serif" font-size="8px" fill="#666" text-anchor="middle">needed?</text>
+  <!-- Step 3 -->
+  <rect x="480" y="20" width="200" height="50" rx="6" fill="#e0e7ff" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="580" y="40" font-family="sans-serif" font-size="11px" font-weight="bold" text-anchor="middle">3. Bundled resources</text>
+  <text x="580" y="56" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">scripts, files, code — on demand</text>
+  <!-- Benefit label -->
+  <text x="350" y="100" font-family="sans-serif" font-size="10px" fill="#555" text-anchor="middle" font-style="italic">Multiple skills stay available without overwhelming the context window</text>
+</svg>
+
+<div class="flex gap-8 mt-2">
+<div class="flex-1">
+
+**Official skills:** docx, pdf, pptx, xlsx, algorithmic-art, canvas-design, mcp-builder, webapp-testing, skill-creator
+
+</div>
+<div class="flex-1">
+
+**Community:** [awesome-claude-skills](https://github.com/travisvn/awesome-claude-skills) — curated directory of skills, tools, and resources
+
+</div>
+</div>
+
+<style scoped>
+p, li { font-size: 0.85em; line-height: 1.4; margin: 0.15em 0; }
+h1 { margin-bottom: 0.2em; }
+</style>
+
+---
 layout: section
 ---
 
@@ -918,10 +970,6 @@ The model is a black box. When quality seems to drop, the cause is rarely what y
 - **Capacity-dependent routing** — some providers route to smaller models under load
 - **Regression in specific domains** — a new model version may improve overall but regress on your particular use case
 
-**It's almost never:**
-- "They nerfed it" — conspiracy theories about intentional degradation
-- "It worked yesterday" — your context yesterday was different
-
 When in doubt: start a fresh session and test with a clean prompt.
 
 ---
@@ -1012,6 +1060,45 @@ Engineers spent 20% of time cleaning up "AI slop" → solved by automated "garba
 
 <div class="text-xs opacity-50 absolute bottom-4 right-8">
 <a href="https://openai.com/index/harness-engineering/">openai.com/index/harness-engineering</a>
+</div>
+
+---
+
+<style scoped>
+p, li { font-size: 0.85em; line-height: 1.4; margin: 0.15em 0; }
+h1 { font-size: 1.3em !important; margin-bottom: 0.2em; }
+</style>
+
+# Pretext: AI-Friendly Iteration Against Browser Ground Truth
+
+Cheng Lou's **Pretext** — a JS library that measures and lays out multiline text *without* DOM manipulation, using pure computation.
+
+<div class="flex gap-8 mt-2">
+<div class="flex-1">
+
+**The problem:** Measuring text in the browser requires triggering expensive DOM reflows — a bottleneck for any UI that needs text height, line counts, or variable-width layouts.
+
+**The approach:**
+- `prepare()` measures text segments once using the canvas font engine as ground truth (~19ms for 500 texts)
+- `layout()` computes height, lines, and wrapping with pure arithmetic (~0.09ms for 500 texts)
+- No DOM in the hot path — works with Canvas, SVG, or WebGL
+
+</div>
+<div class="flex-1">
+
+**Why it's here — the development process:**
+
+Parallel agents trained against real browser rendering for weeks, iterating over and over until output matched Safari, Chrome, and Firefox exactly.
+
+Browser engines provide pixel-perfect ground truth → agents iterate and verify autonomously in parallel → humans focus on architecture, agents grind on correctness.
+
+**Result:** Supports all languages, emoji, bidi text, `pre-wrap`, shrink-wrap sizing, and text flowing around floats.
+
+</div>
+</div>
+
+<div class="text-xs opacity-50 absolute bottom-4 right-8">
+<a href="https://github.com/chenglou/pretext">github.com/chenglou/pretext</a>
 </div>
 
 ---

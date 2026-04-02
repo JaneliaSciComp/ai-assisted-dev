@@ -47,6 +47,7 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 
 - [gstack](https://github.com/garrytan/gstack) — Garry Tan's (YC CEO) open-source skill library: 23 slash-command skills encoding a full sprint process (office hours, CEO/eng/design review, QA, ship, security audits). Built on the SKILL.md standard — works across Codex CLI, Claude Code, Gemini CLI, Cursor, Factory Droid. 62K+ stars. `tags: skills, process, open-source, multi-agent`
 - [GitHub Spec Kit](https://github.com/speckit) — Open-source templates for spec-driven development across Copilot, Claude Code, Gemini CLI, Cursor, Windsurf. `tags: specs, templates, open-source, multi-agent`
+- [awesome-claude-skills](https://github.com/travisvn/awesome-claude-skills) — Curated directory of Claude Skills, tools, and resources. Skills use a progressive disclosure architecture (metadata scan → full instructions → bundled resources) for token efficiency. `tags: skills, claude, curated-list, community`
 
 ### Cloud / Autonomous Agents
 
@@ -95,6 +96,8 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 ## Extraordinary Examples
 
 *Remarkable demonstrations of what's possible with AI-assisted development.*
+
+- [Pretext](https://github.com/chenglou/pretext) — Cheng Lou's JS library for measuring and laying out multiline text without DOM manipulation. Developed by training models against real browser rendering (Safari, Chrome, Firefox) for weeks until output matched exactly — a case study in AI-friendly iteration with pixel-perfect ground truth. [Demos](https://chenglou.me/pretext/) `tags: ai-assisted, browser, text-layout, iteration, ground-truth`
 
 ---
 
