@@ -1,0 +1,106 @@
+# AI-Assisted Software Development Resources
+
+A curated collection of tools, frameworks, articles, and examples for AI-assisted software development, maintained by the Janelia Research Campus community.
+
+## Table of Contents
+
+- [Harnesses & Tools](#harnesses--tools)
+  - [IDE-Integrated](#ide-integrated)
+  - [Terminal / Agent-Based](#terminal--agent-based)
+  - [Autonomous Agents](#autonomous-agents)
+- [Frontier Models](#frontier-models)
+- [Approaches & Best Practices](#approaches--best-practices)
+- [Extraordinary Examples](#extraordinary-examples)
+- [Articles & Blog Posts](#articles--blog-posts)
+- [Videos & Talks](#videos--talks)
+- [Benchmarks & Evaluation](#benchmarks--evaluation)
+
+---
+
+## Harnesses & Tools
+
+### IDE-Integrated
+
+*AI assistants that work within your editor.*
+
+- [GitHub Copilot](https://github.com/features/copilot) — AI pair programmer integrated into VS Code, JetBrains, and other editors. `tags: ide, autocomplete, github`
+- [Cursor](https://www.cursor.com/) — AI-native code editor built on VS Code with deep model integration. `tags: ide, editor, agentic`
+- [Windsurf](https://windsurf.com/) — AI-powered IDE (formerly Codeium) with agentic "Cascade" flows. `tags: ide, editor, agentic`
+- [Cline](https://github.com/cline/cline) — Open-source autonomous coding agent as a VS Code extension. `tags: ide, open-source, agentic`
+
+### Terminal / Agent-Based
+
+*CLI tools where you give the AI a task and it works autonomously.*
+
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) — Anthropic's CLI agent for agentic coding with Claude. File editing, shell access, Git integration. `tags: cli, agentic, anthropic`
+- [Codex CLI](https://github.com/openai/codex) — OpenAI's open-source terminal coding agent built in Rust. `tags: cli, agentic, openai, open-source`
+- [Codex (Cloud)](https://openai.com/codex/) — OpenAI's cloud-based async coding agent with sandboxed environments. `tags: cloud, agentic, openai`
+- [Gemini CLI](https://github.com/google-gemini/gemini-cli) — Google's open-source terminal agent with Gemini 2.5 Pro. Free tier: 1K requests/day. `tags: cli, agentic, google, open-source, free`
+- [Aider](https://aider.chat/) — Open-source AI pair programming in the terminal. Works with multiple models. `tags: cli, open-source, multi-model`
+
+### Autonomous Agents
+
+*Systems that operate with minimal human intervention.*
+
+- [Devin](https://devin.ai/) — Autonomous software engineering agent by Cognition. `tags: autonomous, cloud`
+- [OpenHands](https://github.com/All-Hands-AI/OpenHands) — Open-source platform for autonomous AI software agents. `tags: autonomous, open-source`
+- [SWE-Agent](https://github.com/princeton-nlp/SWE-agent) — Princeton research agent for solving GitHub issues autonomously. `tags: autonomous, research, open-source`
+
+---
+
+## Frontier Models
+
+*The large language models powering AI-assisted development.*
+
+- [Claude (Anthropic)](https://www.anthropic.com/claude) — Opus 4.6, Sonnet 4.6, Haiku 4.5. 200K context. Strong code quality and instruction following. `tags: commercial, api`
+- [GPT / Codex (OpenAI)](https://openai.com/) — GPT-4.1, o3/o4-mini reasoning models. 1M context (Codex). Broad ecosystem. `tags: commercial, api`
+- [Gemini (Google)](https://ai.google.dev/) — Gemini 2.5 Pro. 1M token context window. Free CLI access. `tags: commercial, api, free-tier`
+
+---
+
+## Approaches & Best Practices
+
+*Guides, patterns, and strategies for effective AI-assisted coding.*
+
+- [How OpenAI Uses Codex](https://cdn.openai.com/pdf/6a2631dc-783e-479b-b1a4-af0cfbd38630/how-openai-uses-codex.pdf) — OpenAI's internal use cases and best practices from their own engineering teams: code understanding, refactoring, performance optimization, testing, staying in flow. `tags: best-practices, openai, codex, use-cases`
+
+---
+
+## Extraordinary Examples
+
+*Remarkable demonstrations of what's possible with AI-assisted development.*
+
+---
+
+## Articles & Blog Posts
+
+*Key readings on the state and future of AI-assisted development.*
+
+- [Harness Design for Long-Running Apps](https://www.anthropic.com/engineering/harness-design-long-running-apps) — Anthropic engineering post on multi-agent harness patterns: GAN-inspired generator/evaluator architecture, context management, and when complexity pays off. `tags: harness-design, multi-agent, anthropic, architecture`
+- [Harness Engineering: Leveraging Codex in an Agent-First World](https://openai.com/index/harness-engineering/) — OpenAI's philosophy of the repo as the agent's knowledge store: push docs, plans, and decisions into version control so agents can operate without external context. `tags: harness-design, openai, codex, architecture, agents-md`
+- [Introducing Advanced Tool Use](https://www.anthropic.com/engineering/advanced-tool-use) — Three new API features: Tool Search Tool (on-demand discovery), Programmatic Tool Calling (Python orchestration), and Tool Use Examples. Dramatic token and accuracy improvements. `tags: harness-design, anthropic, tools, mcp, api`
+- [Claude Code Auto Mode](https://www.anthropic.com/engineering/claude-code-auto-mode) — How Anthropic built classifiers to automate permission decisions: two-layer architecture (input probe + transcript classifier), 93% approval rate problem, what it catches and misses. `tags: harness-design, safety, anthropic, permissions, auto-mode`
+
+---
+
+## Videos & Talks
+
+*Presentations, demos, and tutorials.*
+
+---
+
+## Benchmarks & Evaluation
+
+*How models and harnesses are measured.*
+
+---
+
+## Contributing
+
+To add a resource, submit a PR adding an entry under the appropriate section using this format:
+
+```markdown
+- [Resource Name](https://url) — One-line description. `tags: relevant, tags`
+```
+
+For ratings and feedback, see the rating system *(coming soon)*.

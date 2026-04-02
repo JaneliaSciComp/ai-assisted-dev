@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pixi --version)",
+      "Bash(pixi init:*)",
+      "Bash(pixi add:*)",
+      "Bash(rm -rf node_modules package-lock.json)",
+      "Bash(pixi run:*)"
+    ]
+  }
+}
