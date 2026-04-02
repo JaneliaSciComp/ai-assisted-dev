@@ -27,4 +27,4 @@ pixi run npx slidev slides.md
 
 ## Talk Abstract
 
-A survey talk discussing the growing use of AI-assisted software development including (1) an overview of harnesses and frontier models like Claude, Codex, and Gemini, (2) some common approaches to their use, and (3) extraordinary examples of how people have used AI-accelerated coding.
+A survey talk discussing the growing use of AI-assisted software development including (1) an overview of harnesses and frontier models like Claude, Codex, and Gemini, (2) some common approaches and issues with their use, and (3) extraordinary examples of how people have used AI-accelerated coding.
