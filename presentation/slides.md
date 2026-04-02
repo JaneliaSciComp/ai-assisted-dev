@@ -130,6 +130,23 @@ graph TB
 
 ---
 
+# Context Management: The Invisible Harness Problem
+
+The model can only act on what fits in its context window.
+
+| | **Claude Code** (CLI) | **Cowork** (Desktop) |
+|---|---|---|
+| Context window | Up to 1M tokens (GA, March 2026) | Managed automatically |
+| Auto-compaction | Triggers at ~83.5% full — summarizes and continues | Handled behind the scenes |
+| Manual control | `/compact` to summarize, `/clear` to reset | Not needed |
+| Customization | CLAUDE.md can specify what to preserve during compaction | — |
+
+**Why this matters:** Long coding sessions accumulate tool outputs, file contents, and conversation history. Without compaction, the model loses access to its earliest context — including your original intent.
+
+The 1M token window reduced compaction events by 15%, but context management remains a core harness engineering problem.
+
+---
+
 # Claude Code Auto Mode: Safety vs. Usability
 
 Users approve **93%** of permission prompts — approval fatigue is real.
@@ -261,15 +278,15 @@ graph LR
 
 # The Harness Layer Is Evolving Fast
 
-Example: Anthropic's new "Advanced Tool Use" features (beta, March 2026)
+Harnesses are getting smarter about what the model sees and how it acts.
 
-The trend: harnesses are becoming smarter about what the model sees and how it acts.
+Example: Anthropic's "Advanced Tool Use" (beta, March 2026)
 
 | Problem | Solution | Impact |
 |---|---|---|
-| 5 MCP servers = 55K tokens of tool definitions before any work starts | **Tool Search Tool** — discover tools on-demand instead of loading all upfront | 85% token reduction; accuracy 49% → 74% |
-| Each tool call = full inference pass; intermediate data floods context | **Programmatic Tool Calling** — Claude writes Python to orchestrate tools, only final result enters context | 37% fewer tokens; eliminates 19+ inference round-trips |
-| JSON schemas can't express *when* to use optional params or ID formats | **Tool Use Examples** — concrete usage patterns alongside schemas | Accuracy 72% → 90% on complex params |
+| Too many tools loaded upfront | **Tool Search** — find tools on-demand | 85% fewer tokens |
+| Too many round-trips to the model | **Programmatic Calling** — orchestrate in code | 37% fewer tokens |
+| Schema alone isn't enough | **Tool Use Examples** — show, don't just describe | 72% → 90% accuracy |
 
 
 <div class="text-xs opacity-50 absolute bottom-4 right-8">
