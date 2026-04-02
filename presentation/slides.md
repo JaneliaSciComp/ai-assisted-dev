@@ -486,7 +486,7 @@ OpenAI's team spent 20% of their week manually cleaning up "AI slop." That didn'
 
 Their solution: **encode taste as rules, then automate enforcement.**
 
-<svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" class="w-full mt-2">
+<svg viewBox="0 0 700 110" xmlns="http://www.w3.org/2000/svg" class="w-full mt-2">
   <defs>
     <marker id="ah6" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
       <polygon points="0 0, 8 3, 0 6" fill="#666"/>
@@ -516,13 +516,13 @@ Their solution: **encode taste as rules, then automate enforcement.**
   <text x="365" y="56" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Agent Tasks</text>
   <!-- Arrow → Cleanup PRs -->
   <line x1="430" y1="46" x2="468" y2="46" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah6)"/>
-  <text x="449" y="38" font-family="sans-serif" font-size="8px" fill="#666" text-anchor="middle">scan for drift</text>
+  <text x="449" y="80" font-family="sans-serif" font-size="8px" fill="#666" text-anchor="middle">scan for drift</text>
   <!-- Cleanup PRs -->
   <rect x="470" y="26" width="100" height="40" rx="6" fill="#f3f4f6" stroke="#999" stroke-width="1.5"/>
   <text x="520" y="50" font-family="sans-serif" font-size="10px" text-anchor="middle">Cleanup PRs</text>
   <!-- Arrow → Auto-merge -->
   <line x1="570" y1="46" x2="608" y2="46" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah6)"/>
-  <text x="589" y="36" font-family="sans-serif" font-size="7px" fill="#666" text-anchor="middle">reviewed &lt;1 min</text>
+  <text x="589" y="80" font-family="sans-serif" font-size="7px" fill="#666" text-anchor="middle">reviewed &lt;1 min</text>
   <!-- Auto-merge -->
   <rect x="610" y="28" width="80" height="36" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
   <text x="650" y="50" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Auto-merge</text>

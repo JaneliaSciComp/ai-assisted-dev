@@ -45,6 +45,10 @@ This happens when node_modules were created on a different platform (e.g., Linux
 
 Do NOT use Mermaid diagrams in slides.md — they have lazy-rendering issues in Slidev where diagrams fail to render on slide navigation (arrow keys, overview jumps). Use inline SVG instead, which renders immediately and consistently. All font sizes in SVG must use explicit `px` units (e.g., `font-size="11px"` not `font-size="11"`).
 
+### SVG Arrow Labels
+
+Place text labels on arrows **below** the arrow line (higher y value), not above. Labels placed above arrows get clipped or hidden by adjacent boxes in Slidev's rendering. When adding labels below, expand the SVG `viewBox` height to accommodate them (e.g., `viewBox="0 0 700 110"` instead of `100`).
+
 ## Web Research
 
 WebFetch is blocked for many domains (medium.com, venturebeat.com, openai.com, etc.) by the sandbox proxy. When WebFetch fails and the **Claude in Chrome extension** is installed and connected, use Chrome as a fallback — navigate to the URL in a Chrome tab and use `get_page_text` or `read_page` to read the content. If Chrome tools are not available, ask the user to install the extension or read the content manually.
