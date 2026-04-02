@@ -7,7 +7,9 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 - [Harnesses & Tools](#harnesses--tools)
   - [IDE-Integrated](#ide-integrated)
   - [Terminal / Agent-Based](#terminal--agent-based)
-  - [Autonomous Agents](#autonomous-agents)
+  - [Cloud / Autonomous Agents](#cloud--autonomous-agents)
+  - [Spec-Driven Development](#spec-driven-development)
+  - [AI-Powered Design & Prototyping](#ai-powered-design--prototyping)
 - [Frontier Models](#frontier-models)
 - [Approaches & Best Practices](#approaches--best-practices)
 - [Extraordinary Examples](#extraordinary-examples)
@@ -38,13 +40,28 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 - [Gemini CLI](https://github.com/google-gemini/gemini-cli) — Google's open-source terminal agent with Gemini 2.5 Pro. Free tier: 1K requests/day. `tags: cli, agentic, google, open-source, free`
 - [Aider](https://aider.chat/) — Open-source AI pair programming in the terminal. Works with multiple models. `tags: cli, open-source, multi-model`
 
-### Autonomous Agents
+### Cloud / Autonomous Agents
 
-*Systems that operate with minimal human intervention.*
+*Systems designed to work with minimal user interaction beyond specs or task descriptions.*
 
-- [Devin](https://devin.ai/) — Autonomous software engineering agent by Cognition. `tags: autonomous, cloud`
-- [OpenHands](https://github.com/All-Hands-AI/OpenHands) — Open-source platform for autonomous AI software agents. `tags: autonomous, open-source`
-- [SWE-Agent](https://github.com/princeton-nlp/SWE-agent) — Princeton research agent for solving GitHub issues autonomously. `tags: autonomous, research, open-source`
+- [Devin](https://devin.ai/) — AI software engineering agent by Cognition with web-based IDE for monitoring. Assigns tickets, writes code, opens PRs. `tags: cloud, agent, ide`
+- [OpenHands](https://github.com/All-Hands-AI/OpenHands) — Open-source platform for AI software agents. `tags: agent, open-source`
+- [mini-SWE-agent](https://github.com/SWE-agent/mini-swe-agent) — 100-line Python agent that solves GitHub issues. Successor to SWE-agent, scores >74% on SWE-bench verified. By Princeton/Stanford. `tags: agent, research, open-source, lightweight`
+
+### Spec-Driven Development
+
+*Tools that emphasize specifications as the source of truth for AI-generated code.*
+
+- [GitHub Spec Kit](https://github.com/github/spec-kit) — Open-source toolkit for spec-driven development. Templates for Copilot, Claude Code, Gemini CLI, Cursor, Windsurf. Specs become contracts that agents code against. `tags: spec-driven, open-source, github, workflow`
+- [Kiro](https://kiro.dev/) — Amazon/AWS AI-powered IDE built around spec-driven development. Translates natural language into requirements (EARS notation), generates implementation plans, validates against specs. `tags: spec-driven, ide, aws, amazon`
+
+### AI-Powered Design & Prototyping
+
+*AI tools for UI design, prototyping, and full-stack app generation.*
+
+- [Google Stitch](https://stitch.withgoogle.com/) — AI-native UI design canvas from Google Labs. Voice-driven "vibe design," generates HTML/CSS/Tailwind, exports to Figma. Free. `tags: design, ui, google, free`
+- [Antigravity](https://aistudio.google.com/) — Full-stack coding agent in Google AI Studio. Turns text prompts into production-ready web apps with persistent data, auth, and external services. `tags: full-stack, google, cloud, agent`
+- [Firebase Studio](https://firebase.studio/) — Google's app prototyping agent. Natural language, mockups, or screenshots to working apps using popular framework templates. `tags: prototyping, google, cloud`
 
 ---
 

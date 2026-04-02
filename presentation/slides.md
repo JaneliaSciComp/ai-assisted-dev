@@ -24,16 +24,18 @@ Harnesses, Frontier Models, and What's Possible
 
 # Companion Resource Page
 
-This talk has a companion repo: **`janelia-scicomp/ai-assisted-dev`**
+This talk has a repo: **[`github.com/JaneliaSciComp/ai-assisted-dev`](https://github.com/JaneliaSciComp/ai-assisted-dev)**
+
+In addition to this presentation which uses Slidev, there's a `resources` directory with an Awesome-style markdown page of links to AI-assisted software development resources.
 
 It's in early development — mostly seeded with sources from this talk. The goal is a curated, searchable collection of links for AI-assisted development at Janelia.
 
 **If time permits** — some wild ideas for where this could go:
 
-- Rate and comment on resources (short Janelian reviews, not essays)
+- Rate and comment on resources (short one-liner Janelian reviews)
 - Tag-based search across tools, approaches, and examples
 - "Follow" individual Janelians to see what they find useful
-- AI-powered search that understands what you're actually looking for
+- AI-powered search that combines the above to suggest resources
 
 For now: explore the links, and contribute anything you've found helpful.
 
@@ -275,7 +277,7 @@ One capability, three interfaces:
 
 **Cowork wraps Claude Code** with additional infrastructure for non-developers:
 
-- Full **VM isolation** (Apple Virtualization Framework)
+- Full **VM isolation** (host-native virtualization)
 - **Automatic** context management — no `/compact` or `/clear`
 - **Parallel sub-agents** for complex tasks
 - **Three-tier permissions** (none → folder-scoped → explicit approval)
@@ -288,18 +290,37 @@ Built with Claude Code in ~1.5 weeks — humans designed the architecture, agent
 
 ---
 
-# Claude: Comparison of Two Surfaces
+# Emerging Harness Patterns
 
-| | **Claude Code** (CLI) | **Cowork** (Desktop App) |
-|---|---|---|
-| Context window | Up to 1M tokens (GA, March 2026) | Managed automatically |
-| Auto-compaction | Triggers at ~83.5% full — summarizes and continues | Handled behind the scenes |
-| Manual control | `/compact` to summarize, `/clear` to reset | Not needed |
-| Customization | CLAUDE.md can specify what to preserve during compaction | — |
+<div class="flex gap-8 mt-2">
+<div class="flex-1">
 
-**Why this matters:** Long coding sessions accumulate tool outputs, file contents, and conversation history. Without compaction, the model loses access to its earliest context — including your original intent.
+### Spec-Driven Development
 
-The 1M token window reduced compaction events by 15%, but context management remains a core harness engineering problem.
+Specs as the **source of truth** — agents code against contracts, not just prompts.
+
+- **GitHub Spec Kit** — Open-source templates for Copilot, Claude Code, Gemini CLI, Cursor, Windsurf
+- **Kiro** (Amazon/AWS) — IDE that translates natural language → requirements (EARS notation) → implementation plans → validated code
+
+</div>
+<div class="flex-1">
+
+### AI-Powered Design & Prototyping
+
+From **natural language or mockups** directly to working apps.
+
+- **Google Stitch** — Voice-driven "vibe design" canvas, generates HTML/CSS/Tailwind, exports to Figma
+- **Antigravity** (Google AI Studio) — Full-stack agent: text prompts → production-ready web apps with auth & data
+- **Firebase Studio** — Screenshots or descriptions → working apps from framework templates
+
+</div>
+</div>
+
+<div class="mt-4 text-sm opacity-70">
+
+**The trend:** Harnesses are moving upstream — from code generation to requirements capture and UI design.
+
+</div>
 
 ---
 
@@ -930,6 +951,6 @@ layout: center
 
 # Resources & Discussion
 
-**GitHub**: `janelia-scicomp/ai-assisted-dev`
+**GitHub**: [`JaneliaSciComp/ai-assisted-dev`](https://github.com/JaneliaSciComp/ai-assisted-dev)
 
 Explore the curated resource list and contribute links.
