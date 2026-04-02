@@ -6,7 +6,7 @@ info: |
   A survey of harnesses, frontier models, and extraordinary examples
 drawings:
   persist: false
-transition: slide-left
+transition: none
 mdc: true
 ---
 
@@ -19,6 +19,23 @@ Harnesses, Frontier Models, and What's Possible
   <div class="text-sm opacity-70">Scientific Computing Software</div>
   <div class="text-sm opacity-50">HHMI Janelia Research Campus</div>
 </div>
+
+---
+
+# Companion Resource Page
+
+This talk has a companion repo: **`janelia-scicomp/ai-assisted-dev`**
+
+It's in early development — mostly seeded with sources from this talk. The goal is a curated, searchable collection of links for AI-assisted development at Janelia.
+
+**If time permits** — some wild ideas for where this could go:
+
+- Rate and comment on resources (short Janelian reviews, not essays)
+- Tag-based search across tools, approaches, and examples
+- "Follow" individual Janelians to see what they find useful
+- AI-powered search that understands what you're actually looking for
+
+For now: explore the links, and contribute anything you've found helpful.
 
 ---
 
@@ -77,22 +94,65 @@ Saddle, reins, stirrups → context management, tool use, feedback loops
 
 A **harness** wraps a frontier model with everything it needs to do useful work:
 
-```mermaid
-graph LR
-    D[Developer] --> H[Harness]
-    H --> T[Tools: files, shell, search]
-    H --> CTX[Context: project files, docs, history]
-    H --> M[Frontier Model]
-    M --> H
-    H --> O[Output]
-    O -->|verify & feedback| H
-```
+<svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" class="w-full mt-2">
+  <defs>
+    <marker id="ah2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#666"/>
+    </marker>
+    <marker id="ah2rev" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+      <polygon points="8 0, 0 3, 8 6" fill="#666"/>
+    </marker>
+  </defs>
 
-**Tools** — file editing, shell commands, web search, MCP integrations
+  <!-- Developer -->
+  <rect x="10" y="80" width="90" height="36" rx="6" fill="#dbeafe" stroke="#999" stroke-width="1.5"/>
+  <text x="55" y="100" font-family="sans-serif" font-size="12px" font-weight="bold" text-anchor="middle">Developer</text>
 
-**Context management** — what the model sees, when, and how much
+  <!-- Arrow: Developer → Harness -->
+  <line x1="100" y1="98" x2="148" y2="98" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah2)"/>
 
+  <!-- Harness (center) -->
+  <rect x="150" y="70" width="100" height="56" rx="6" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="200" y="94" font-family="sans-serif" font-size="12px" font-weight="bold" text-anchor="middle">Harness</text>
+  <text x="200" y="110" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle">orchestration</text>
+
+  <!-- Arrow: Harness → Tools -->
+  <line x1="250" y1="82" x2="318" y2="35" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah2)"/>
+  <!-- Tools -->
+  <rect x="320" y="12" width="170" height="36" rx="6" fill="#f3f4f6" stroke="#999" stroke-width="1.5"/>
+  <text x="405" y="33" font-family="sans-serif" font-size="11px" text-anchor="middle">Tools: files, shell, search</text>
+
+  <!-- Arrow: Harness → Context -->
+  <line x1="250" y1="98" x2="318" y2="98" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah2)"/>
+  <!-- Context -->
+  <rect x="320" y="80" width="170" height="36" rx="6" fill="#f3f4f6" stroke="#999" stroke-width="1.5"/>
+  <text x="405" y="101" font-family="sans-serif" font-size="11px" text-anchor="middle">Context: files, docs, history</text>
+
+  <!-- Bidirectional arrow: Harness ↔ Frontier Model -->
+  <line x1="252" y1="114" x2="318" y2="165" fill="none" stroke="#666" stroke-width="1.5" marker-start="url(#ah2rev)" marker-end="url(#ah2)"/>
+  <!-- Frontier Model -->
+  <rect x="320" y="148" width="170" height="36" rx="6" fill="#dbeafe" stroke="#999" stroke-width="1.5"/>
+  <text x="405" y="169" font-family="sans-serif" font-size="12px" font-weight="bold" text-anchor="middle">Frontier Model</text>
+
+  <!-- Arrow: Harness → Output -->
+  <line x1="200" y1="126" x2="200" y2="155" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah2)"/>
+  <!-- Output -->
+  <rect x="150" y="158" width="100" height="32" rx="6" fill="#dcfce7" stroke="#999" stroke-width="1.5"/>
+  <text x="200" y="177" font-family="sans-serif" font-size="11px" text-anchor="middle">Output</text>
+
+  <!-- Arrow: Output → feedback loop back to Harness -->
+  <path d="M 148,174 C 115,174 115,120 150,100" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah2)"/>
+  <text x="100" y="142" font-family="sans-serif" font-size="9px" fill="#666" text-anchor="middle">verify &amp;</text>
+  <text x="100" y="154" font-family="sans-serif" font-size="9px" fill="#666" text-anchor="middle">feedback</text>
+</svg>
+
+<div class="text-sm mt-2">
+
+**Tools** — file editing, shell commands, web search, MCP integrations<br>
+**Context** — what the model sees, when, and how much<br>
 **Feedback loops** — verification, test results, human review fed back in
+
+</div>
 
 ---
 
@@ -107,6 +167,19 @@ graph LR
 | **Chat / Web** | Conversation-first, paste code in and out | claude.ai | ChatGPT | Gemini |
 
 Each vendor is converging on multiple surfaces — but the sweet spots differ.
+
+---
+
+# OpenAI Codex: Different Harnesses → Different UIs
+
+<div class="relative mt-4" style="height: 420px;">
+  <img src="/images/chatgpt-screenshot.png" class="absolute rounded shadow-lg border border-gray-600" style="left: 20px; top: 0px; width: 320px; z-index: 1;" />
+  <div class="absolute text-sm font-bold opacity-70" style="left: 120px; top: 270px; z-index: 1;">ChatGPT App</div>
+  <img src="/images/codex-cli-screenshot.png" class="absolute rounded shadow-lg border border-gray-600" style="left: 240px; top: 40px; width: 320px; z-index: 2;" />
+  <div class="absolute text-sm font-bold opacity-70" style="left: 355px; top: 310px; z-index: 2;">Codex CLI</div>
+  <img src="/images/codex-screenshot.png" class="absolute rounded shadow-lg border border-gray-600" style="left: 460px; top: 80px; width: 320px; z-index: 3;" />
+  <div class="absolute text-sm font-bold opacity-70" style="left: 575px; top: 350px; z-index: 3;">Codex App</div>
+</div>
 
 ---
 
@@ -131,11 +204,51 @@ graph TB
 
 ---
 
-# Context Management: The Invisible Harness Problem
+# Claude: Comparison of Two Surfaces
 
-The model can only act on what fits in its context window.
+<!-- TODO: Add screenshot(s) showing Claude Code CLI and/or Cowork desktop -->
 
-| | **Claude Code** (CLI) | **Cowork** (Desktop) |
+<div class="flex gap-8 items-center">
+<div class="flex-1">
+
+<svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" class="w-full">
+  <style>
+    .layer-label { font-family: sans-serif; font-size: 13px; text-anchor: middle; dominant-baseline: central; }
+    .detail { font-family: sans-serif; font-size: 9px; text-anchor: middle; dominant-baseline: central; fill: #555; }
+  </style>
+  <!-- Claude Code layer (inner) -->
+  <rect x="60" y="70" width="240" height="100" rx="12" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+  <text x="180" y="105" class="layer-label" font-weight="bold" fill="#1e40af">Claude Code</text>
+  <text x="180" y="125" class="detail">CLI · Bash/Read/Write/Edit · CLAUDE.md</text>
+  <text x="180" y="140" class="detail">Manual context · 1M tokens · Full control</text>
+
+  <!-- Cowork layer (outer) -->
+  <rect x="15" y="20" width="330" height="190" rx="16" fill="none" stroke="#8b5cf6" stroke-width="2.5" stroke-dasharray="6,3"/>
+  <text x="180" y="45" class="layer-label" font-weight="bold" fill="#6d28d9">Cowork</text>
+  <text x="180" y="195" class="detail" fill="#6d28d9">VM sandbox · Auto-context · Sub-agents · MCP connectors · Plugins</text>
+</svg>
+
+</div>
+<div class="flex-1 text-sm">
+
+**Cowork wraps Claude Code** with additional infrastructure for non-developers:
+
+- Full **VM isolation** (Apple Virtualization Framework)
+- **Automatic** context management — no `/compact` or `/clear`
+- **Parallel sub-agents** for complex tasks
+- **Three-tier permissions** (none → folder-scoped → explicit approval)
+- MCP connectors, plugins, MCP Apps
+
+Built with Claude Code in ~1.5 weeks — humans designed the architecture, agents wrote the code.
+
+</div>
+</div>
+
+---
+
+# Claude: Comparison of Two Surfaces
+
+| | **Claude Code** (CLI) | **Cowork** (Desktop App) |
 |---|---|---|
 | Context window | Up to 1M tokens (GA, March 2026) | Managed automatically |
 | Auto-compaction | Triggers at ~83.5% full — summarizes and continues | Handled behind the scenes |
@@ -299,18 +412,21 @@ Example: Anthropic's "Advanced Tool Use" (beta, March 2026)
 # What's Available at Janelia
 
 **OpenAI (HHMI Enterprise)**
-- Organization-wide token allocation across HHMI
+- Organization-wide token pool for HQ+Janelia
 - ChatGPT, Codex cloud agent, Codex CLI
+- It's a big pool. HQ more ChatGPT-oriented.
 
 **Anthropic (Claude)**
 - Enterprise collaboration in progress
 - Currently: Claude Max plans or API access
-- Claude Code is the primary harness most of us use
+- Soon: Enterprise individualized "consumption" model (not Max)
 
 **Google (Gemini)**
-- Available via Janelia (Mark K), Google-paid Google Cloud Projects
+- Limited Enterprise licenses (~$20/mo Pro) available through Support
+- Licensing more fractured. Unsure about Ultra and above.
 - Gemini CLI is free with personal Google accounts (1K requests/day)
-- 1M token context window
+
+<div class="text-lg absolute right-8 top-1/2 -translate-y-1/2 text-left">Disclaimer:<br/>As of Apr 2, 2026</div>
 
 ---
 layout: section
