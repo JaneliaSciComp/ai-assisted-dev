@@ -13,7 +13,9 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
   - [AI-Powered Design & Prototyping](#ai-powered-design--prototyping)
   - [Sandboxing & Containment](#sandboxing--containment)
 - [Frontier Models](#frontier-models)
-- [Approaches & Best Practices](#approaches--best-practices)
+  - [Claude (Anthropic)](#claude-anthropic)
+  - [OpenAI Codex](#openai-codex)
+  - [Google Gemini](#google-gemini)
 - [Extraordinary Examples](#extraordinary-examples)
 - [Articles & Blog Posts](#articles--blog-posts)
 - [Videos & Talks](#videos--talks)
@@ -50,7 +52,6 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 
 - [gstack](https://github.com/garrytan/gstack) — Garry Tan's (YC CEO) open-source skill library: 23 slash-command skills encoding a full sprint process (office hours, CEO/eng/design review, QA, ship, security audits). Built on the SKILL.md standard — works across Codex CLI, Claude Code, Gemini CLI, Cursor, Factory Droid. 62K+ stars. `tags: skills, process, open-source, multi-agent`
 - [GitHub Spec Kit](https://github.com/speckit) — Open-source templates for spec-driven development across Copilot, Claude Code, Gemini CLI, Cursor, Windsurf. `tags: specs, templates, open-source, multi-agent`
-- [awesome-claude-skills](https://github.com/travisvn/awesome-claude-skills) — Curated directory of Claude Skills, tools, and resources. Skills use a progressive disclosure architecture (metadata scan → full instructions → bundled resources) for token efficiency. `tags: skills, claude, curated-list, community`
 
 ### Cloud / Autonomous Agents
 
@@ -85,20 +86,39 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 
 ## Frontier Models
 
-*The large language models powering AI-assisted development.*
+*The large language models powering AI-assisted development, with model-specific resources.*
 
-- [Claude (Anthropic)](https://www.anthropic.com/claude) — Opus 4.6, Sonnet 4.6, Haiku 4.5. 200K context. Strong code quality and instruction following. `tags: commercial, api`
-- [GPT / Codex (OpenAI)](https://openai.com/) — GPT-4.1, o3/o4-mini reasoning models. 1M context (Codex). Broad ecosystem. `tags: commercial, api`
-- [Gemini (Google)](https://ai.google.dev/) — Gemini 2.5 Pro. 1M token context window. Free CLI access. `tags: commercial, api, free-tier`
+### Claude (Anthropic)
 
----
+*Opus 4.6, Sonnet 4.6, Haiku 4.5. 200K context. Strong code quality and instruction following.* — [claude.ai](https://www.anthropic.com/claude)
 
-## Approaches & Best Practices
-
-*Guides, patterns, and strategies for effective AI-assisted coding.*
+#### Articles & Blog Posts
 
 - [Best Practices for Claude Code](https://code.claude.com/docs/en/best-practices) — Comprehensive guide from Anthropic: explore-plan-code-verify workflow, CLAUDE.md best practices, context management, subagents, common failure patterns. `tags: best-practices, anthropic, claude-code, workflow`
+- [Harness Design for Long-Running Apps](https://www.anthropic.com/engineering/harness-design-long-running-apps) — Anthropic engineering post on multi-agent harness patterns: GAN-inspired generator/evaluator architecture, context management, and when complexity pays off. `tags: harness-design, multi-agent, anthropic, architecture`
+- [Introducing Advanced Tool Use](https://www.anthropic.com/engineering/advanced-tool-use) — Three new API features: Tool Search Tool (on-demand discovery), Programmatic Tool Calling (Python orchestration), and Tool Use Examples. Dramatic token and accuracy improvements. `tags: harness-design, anthropic, tools, mcp, api`
+- [Claude Code Auto Mode](https://www.anthropic.com/engineering/claude-code-auto-mode) — How Anthropic built classifiers to automate permission decisions: two-layer architecture (input probe + transcript classifier), 93% approval rate problem, what it catches and misses. `tags: harness-design, safety, anthropic, permissions, auto-mode`
+
+#### Repos & Resources
+
+- [awesome-claude-skills](https://github.com/travisvn/awesome-claude-skills) — Curated directory of Claude Skills, tools, and resources. Skills use a progressive disclosure architecture (metadata scan → full instructions → bundled resources) for token efficiency. `tags: skills, claude, curated-list, community`
+
+### OpenAI Codex
+
+*GPT-4.1, o3/o4-mini reasoning models. 1M context (Codex). Broad ecosystem.* — [openai.com](https://openai.com/)
+
+#### Articles & Blog Posts
+
 - [How OpenAI Uses Codex](https://cdn.openai.com/pdf/6a2631dc-783e-479b-b1a4-af0cfbd38630/how-openai-uses-codex.pdf) — OpenAI's internal use cases and best practices from their own engineering teams: code understanding, refactoring, performance optimization, testing, staying in flow. `tags: best-practices, openai, codex, use-cases`
+- [Harness Engineering: Leveraging Codex in an Agent-First World](https://openai.com/index/harness-engineering/) — OpenAI's philosophy of the repo as the agent's knowledge store: push docs, plans, and decisions into version control so agents can operate without external context. `tags: harness-design, openai, codex, architecture, agents-md`
+
+#### Repos & Resources
+
+- [codex-cli-best-practice](https://github.com/shanraisshan/codex-cli-best-practice) — Comprehensive community guide with 47 tips for OpenAI Codex CLI: subagents, skills, workflows, and orchestration patterns. `tags: best-practices, codex, tips, community, open-source`
+
+### Google Gemini
+
+*Gemini 2.5 Pro. 1M token context window. Free CLI access.* — [ai.google.dev](https://ai.google.dev/)
 
 ---
 
@@ -112,13 +132,9 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 
 ## Articles & Blog Posts
 
-*Key readings on the state and future of AI-assisted development.*
+*Key readings on the state and future of AI-assisted development (model-agnostic).*
 
-- [Harness Design for Long-Running Apps](https://www.anthropic.com/engineering/harness-design-long-running-apps) — Anthropic engineering post on multi-agent harness patterns: GAN-inspired generator/evaluator architecture, context management, and when complexity pays off. `tags: harness-design, multi-agent, anthropic, architecture`
-- [Harness Engineering: Leveraging Codex in an Agent-First World](https://openai.com/index/harness-engineering/) — OpenAI's philosophy of the repo as the agent's knowledge store: push docs, plans, and decisions into version control so agents can operate without external context. `tags: harness-design, openai, codex, architecture, agents-md`
-- [Introducing Advanced Tool Use](https://www.anthropic.com/engineering/advanced-tool-use) — Three new API features: Tool Search Tool (on-demand discovery), Programmatic Tool Calling (Python orchestration), and Tool Use Examples. Dramatic token and accuracy improvements. `tags: harness-design, anthropic, tools, mcp, api`
 - [The Emerging "Harness Engineering" Playbook](https://www.ignorance.ai/p/the-emerging-harness-engineering) — Charlie Guo's overview of best practices for building structured environments, tools, and documentation that enable AI coding agents to work effectively at scale. `tags: harness-design, best-practices, overview, agents`
-- [Claude Code Auto Mode](https://www.anthropic.com/engineering/claude-code-auto-mode) — How Anthropic built classifiers to automate permission decisions: two-layer architecture (input probe + transcript classifier), 93% approval rate problem, what it catches and misses. `tags: harness-design, safety, anthropic, permissions, auto-mode`
 
 ---
 
