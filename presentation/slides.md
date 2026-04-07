@@ -622,7 +622,7 @@ The single highest-leverage pattern across all harnesses:
   <text x="610" y="37" font-family="sans-serif" font-size="12px" font-weight="bold" text-anchor="middle">Done</text>
   <!-- Arrow: Verify → Code (tests fail, curved below) -->
   <path d="M 460,51 C 460,72 360,72 340,51" fill="none" stroke="#e11d48" stroke-width="1.5" marker-end="url(#ah7)"/>
-  <text x="400" y="72" font-family="sans-serif" font-size="8px" fill="#e11d48" text-anchor="middle">tests fail</text>
+  <text x="400" y="78" font-family="sans-serif" font-size="8px" fill="#e11d48" text-anchor="middle">tests fail</text>
 </svg>
 
 **Explore** — Read code, ask questions, understand the system. Use Plan Mode or Ask Mode.
