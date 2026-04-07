@@ -11,6 +11,7 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
   - [Cloud / Autonomous Agents](#cloud--autonomous-agents)
   - [Spec-Driven Development](#spec-driven-development)
   - [AI-Powered Design & Prototyping](#ai-powered-design--prototyping)
+  - [Sandboxing & Containment](#sandboxing--containment)
 - [Frontier Models](#frontier-models)
 - [Approaches & Best Practices](#approaches--best-practices)
 - [Extraordinary Examples](#extraordinary-examples)
@@ -40,6 +41,8 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 - [Codex (Cloud)](https://openai.com/codex/) — OpenAI's cloud-based async coding agent with sandboxed environments. `tags: cloud, agentic, openai`
 - [Gemini CLI](https://github.com/google-gemini/gemini-cli) — Google's open-source terminal agent with Gemini 2.5 Pro. Free tier: 1K requests/day. `tags: cli, agentic, google, open-source, free`
 - [Aider](https://aider.chat/) — Open-source AI pair programming in the terminal. Works with multiple models. `tags: cli, open-source, multi-model`
+- [Pi](https://pi.dev/) — Minimal, extensible terminal coding agent by Mario Zechner. Works with 15+ AI providers, customizable via TypeScript extensions and skills. `tags: cli, agentic, open-source, multi-model, extensible`
+- [Amp](https://ampcode.com/) — Coding agent by Sourcegraph. CLI-based, pay-as-you-go with frontier models. `tags: cli, agentic, sourcegraph, multi-model`
 
 ### Skills & Extensions
 
@@ -71,6 +74,12 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 - [Google Stitch](https://stitch.withgoogle.com/) — AI-native UI design canvas from Google Labs. Voice-driven "vibe design," generates HTML/CSS/Tailwind, exports to Figma. Free. `tags: design, ui, google, free`
 - [Antigravity](https://aistudio.google.com/) — Full-stack coding agent in Google AI Studio. Turns text prompts into production-ready web apps with persistent data, auth, and external services. `tags: full-stack, google, cloud, agent`
 - [Firebase Studio](https://firebase.studio/) — Google's app prototyping agent. Natural language, mockups, or screenshots to working apps using popular framework templates. `tags: prototyping, google, cloud`
+
+### Sandboxing & Containment
+
+*Tools for isolating and constraining AI agents to prevent unintended system changes.*
+
+- [jai](https://jai.scs.stanford.edu/) — Lightweight Linux sandbox for AI agents from Stanford SCS. Contains agents to a working directory with copy-on-write overlays — no Docker required. `tags: sandbox, security, open-source, containment, stanford`
 
 ---
 
@@ -108,6 +117,7 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 - [Harness Design for Long-Running Apps](https://www.anthropic.com/engineering/harness-design-long-running-apps) — Anthropic engineering post on multi-agent harness patterns: GAN-inspired generator/evaluator architecture, context management, and when complexity pays off. `tags: harness-design, multi-agent, anthropic, architecture`
 - [Harness Engineering: Leveraging Codex in an Agent-First World](https://openai.com/index/harness-engineering/) — OpenAI's philosophy of the repo as the agent's knowledge store: push docs, plans, and decisions into version control so agents can operate without external context. `tags: harness-design, openai, codex, architecture, agents-md`
 - [Introducing Advanced Tool Use](https://www.anthropic.com/engineering/advanced-tool-use) — Three new API features: Tool Search Tool (on-demand discovery), Programmatic Tool Calling (Python orchestration), and Tool Use Examples. Dramatic token and accuracy improvements. `tags: harness-design, anthropic, tools, mcp, api`
+- [The Emerging "Harness Engineering" Playbook](https://www.ignorance.ai/p/the-emerging-harness-engineering) — Charlie Guo's overview of best practices for building structured environments, tools, and documentation that enable AI coding agents to work effectively at scale. `tags: harness-design, best-practices, overview, agents`
 - [Claude Code Auto Mode](https://www.anthropic.com/engineering/claude-code-auto-mode) — How Anthropic built classifiers to automate permission decisions: two-layer architecture (input probe + transcript classifier), 93% approval rate problem, what it catches and misses. `tags: harness-design, safety, anthropic, permissions, auto-mode`
 
 ---
