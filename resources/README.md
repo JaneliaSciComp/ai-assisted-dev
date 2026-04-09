@@ -52,6 +52,7 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 
 - [gstack](https://github.com/garrytan/gstack) — Garry Tan's (YC CEO) open-source skill library: 23 slash-command skills encoding a full sprint process (office hours, CEO/eng/design review, QA, ship, security audits). Built on the SKILL.md standard — works across Codex CLI, Claude Code, Gemini CLI, Cursor, Factory Droid. 62K+ stars. `tags: skills, process, open-source, multi-agent`
 - [GitHub Spec Kit](https://github.com/speckit) — Open-source templates for spec-driven development across Copilot, Claude Code, Gemini CLI, Cursor, Windsurf. `tags: specs, templates, open-source, multi-agent`
+- [Impeccable](https://impeccable.style/) — Open-source design skills package by Paul Bakaus. 21 commands to steer AI-generated UIs toward better design while detecting anti-patterns like purple gradients and nested cards. `tags: skills, design, ui, open-source`
 
 ### Cloud / Autonomous Agents
 
@@ -120,6 +121,10 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 
 *Gemini 2.5 Pro. 1M token context window. Free CLI access.* — [ai.google.dev](https://ai.google.dev/)
 
+#### Repos & Resources
+
+- [Gemma](https://ai.google.dev/gemma/docs) — Google's open-weight model family (Gemma 4). Lightweight enough for local fine-tuning, 140+ languages, up to 256K context. Built on Gemini research. `tags: open-weights, local, fine-tuning, google, multimodal`
+
 ---
 
 ## Extraordinary Examples
@@ -127,6 +132,9 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 *Remarkable demonstrations of what's possible with AI-assisted development.*
 
 - [Pretext](https://github.com/chenglou/pretext) — Cheng Lou's JS library for measuring and laying out multiline text without DOM manipulation. Developed by training models against real browser rendering (Safari, Chrome, Firefox) for weeks until output matched exactly — a case study in AI-friendly iteration with pixel-perfect ground truth. [Demos](https://chenglou.me/pretext/) `tags: ai-assisted, browser, text-layout, iteration, ground-truth`
+- [vinext](https://blog.cloudflare.com/vinext/) — Cloudflare rebuilt Next.js with AI in one week. Vite-based alternative that builds up to 4x faster, produces 57% smaller bundles, and deploys to Cloudflare Workers. `tags: ai-assisted, cloudflare, vite, nextjs, framework`
+- [rewrites.bio](https://rewrites.bio/) — Seqera Labs' manifesto for AI-assisted rewrites of bioinformatics tools. Principles for exact output matching, validation, and attribution. Example: RustQC on 10 GB BAM runs 63x faster, saving ~1.5M CPU-hours annually. `tags: ai-assisted, bioinformatics, scientific-software, rewrite, validation`
+- [Project Glasswing](https://www.anthropic.com/glasswing) — Anthropic's Claude Mythos Preview found thousands of previously unknown vulnerabilities in major OSes and browsers. 83.1% on CyberGym benchmark. $100M in credits committed with partners including AWS, Apple, Google, Microsoft. `tags: security, vulnerabilities, anthropic, mythos, defensive-ai`
 
 ---
 
@@ -134,6 +142,7 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 
 *Key readings on the state and future of AI-assisted development (model-agnostic).*
 
+- [The Third Era of AI Software Development](https://cursor.com/blog/third-era) — Cursor's Michael Truell on the shift from interactive AI coding to autonomous cloud agents handling larger tasks independently over extended periods. `tags: vision, cursor, autonomous-agents, cloud`
 - [The Emerging "Harness Engineering" Playbook](https://www.ignorance.ai/p/the-emerging-harness-engineering) — Charlie Guo's overview of best practices for building structured environments, tools, and documentation that enable AI coding agents to work effectively at scale. `tags: harness-design, best-practices, overview, agents`
 
 ---
