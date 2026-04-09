@@ -106,7 +106,7 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 
 ### OpenAI Codex
 
-*GPT-4.1, o3/o4-mini reasoning models. 1M context (Codex). Broad ecosystem.* — [openai.com](https://openai.com/)
+*GPT-5.4. 1M context (Codex). Broad ecosystem.* — [openai.com](https://openai.com/)
 
 #### Articles & Blog Posts
 
@@ -119,7 +119,7 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 
 ### Google Gemini
 
-*Gemini 2.5 Pro. 1M token context window. Free CLI access.* — [ai.google.dev](https://ai.google.dev/)
+*Gemini 3.1 Pro. 1M token context window. Free CLI access.* — [ai.google.dev](https://ai.google.dev/)
 
 #### Repos & Resources
 
