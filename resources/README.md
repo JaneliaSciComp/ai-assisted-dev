@@ -58,6 +58,7 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 
 *Systems designed to work with minimal user interaction beyond specs or task descriptions.*
 
+- [Copilot cloud agent](https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent) — GitHub's autonomous cloud coding agent. Spins up ephemeral GitHub Actions environments, researches the codebase with RAG via GitHub code search, writes code, runs tests, and pushes to a branch. Assignable via issues or Copilot Chat. `tags: cloud-agents, github, multi-model`
 - [Devin](https://devin.ai/) — AI software engineering agent by Cognition with web-based IDE for monitoring. Assigns tickets, writes code, opens PRs. `tags: cloud-agents, ide`
 - [OpenHands](https://github.com/All-Hands-AI/OpenHands) — Open-source platform for AI software agents. `tags: agent, open-source`
 - [mini-SWE-agent](https://github.com/SWE-agent/mini-swe-agent) — 100-line Python agent that solves GitHub issues. Successor to SWE-agent, scores >74% on SWE-bench verified. By Princeton/Stanford. `tags: agent, research, open-source, lightweight`
