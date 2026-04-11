@@ -112,6 +112,7 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 #### Repos & Resources
 
 - [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) — Curated list of skills, hooks, slash-commands, agent orchestrators, and plugins for Claude Code. Multiple browsing styles (awesome, extra, classic, flat). <!-- tags: curated-list, claude-code, skills, plugins, community, open-source -->
+- [awesome-claude-skills](https://github.com/travisvn/awesome-claude-skills) — Curated directory of Claude Skills, tools, and resources. Skills use a progressive disclosure architecture (metadata scan → full instructions → bundled resources) for token efficiency. <!-- tags: skills, claude, curated-list, community -->
 - [claude-code-ultimate-guide](https://github.com/FlorianBruniaux/claude-code-ultimate-guide) — Comprehensive guide from beginner to power user: 228 templates, 271-question quiz, 41 architecture diagrams, security threat database (24 CVEs, 655 malicious skills tracked), and an installable MCP server for in-session access. <!-- tags: guide, claude-code, templates, security, workflows, community, open-source -->
 - [awesome-claude-plugins](https://github.com/quemsah/awesome-claude-plugins) — Automated tracker of Claude Code plugin adoption across GitHub. Indexes 11K+ repos with star counts and plugin counts, updated daily via n8n workflows. <!-- tags: plugins, claude-code, metrics, adoption, community, open-source -->
 
@@ -137,7 +138,7 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 
 #### Repos & Resources
 
-- [Gemma](https://ai.google.dev/gemma/docs) — Google's open-weight model family (Gemma 4). Lightweight enough for local fine-tuning, 140+ languages, up to 256K context. <!-- tags: open-weights, local, fine-tuning, google, multimodal -->
+- [Gemma](https://ai.google.dev/gemma/docs) — Google's open-weight model family (Gemma 4). Lightweight enough for local fine-tuning, 140+ languages, up to 256K context. Built on Gemini research. <!-- tags: open-weights, local, fine-tuning, google, multimodal -->
 - [awesome-gemini-cli](https://github.com/Piebald-AI/awesome-gemini-cli) — Curated list of tools, extensions, frameworks, MCP servers, and resources for Gemini CLI. Covers interfaces, agent orchestration, SDKs, and API bridges. <!-- tags: curated-list, gemini-cli, tools, extensions, community, open-source -->
 - [Gemini CLI Tips](https://github.com/addyosmani/gemini-cli-tips) — ~30 pro-tips for effective agentic coding with Gemini CLI, by Addy Osmani (a Google engineering lead). <!-- tags: tips, best-practices, gemini-cli, community, open-source -->
 - [Gemini cookbook](https://github.com/google-gemini/cookbook) — Google's official collection of examples and guides demonstrating Gemini API best practices. <!-- tags: cookbook, examples, google, gemini, official -->
