@@ -54,6 +54,8 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 
 *Shareable skill libraries and configuration packs that extend agent capabilities.*
 
+- [AI Project Template](https://github.com/sprustonlab/AI_PROJECT_TEMPLATE/) — Copier template that scaffolds Claude Code projects with multi-agent workflows, guardrails, MCP tool plugins, and a TUI wrapper (claudechic). Includes a structured project-team workflow with vision, spec, implementation, and testing phases. <!-- tags: template, multi-agent, claude-code, workflows, guardrails, open-source -->
+- [awesome-claude-skills](https://github.com/travisvn/awesome-claude-skills) — Curated directory of Claude Skills, tools, and resources. Skills use a progressive disclosure architecture (metadata scan → full instructions → bundled resources) for token efficiency. <!-- tags: skills, claude, curated-list, community -->
 - [gstack](https://github.com/garrytan/gstack) — Garry Tan's (YC CEO) open-source skill library: 23 slash-command skills encoding a full sprint process (office hours, CEO/eng/design review, QA, ship, security audits). Built on the SKILL.md standard — works across Codex CLI, Claude Code, Gemini CLI, Cursor, Factory Droid. 62K+ stars. <!-- tags: skills, process, open-source, multi-agent -->
 - [GitHub Spec Kit](https://github.com/speckit) — Open-source templates for spec-driven development across Copilot, Claude Code, Gemini CLI, Cursor, Windsurf. <!-- tags: specs, templates, open-source, multi-agent -->
 - [Impeccable](https://impeccable.style/) — Open-source design skills package by Paul Bakaus. 21 commands to steer AI-generated UIs toward better design while detecting anti-patterns like purple gradients and nested cards. <!-- tags: skills, design, ui, open-source -->
@@ -109,7 +111,9 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 
 #### Repos & Resources
 
-- [awesome-claude-skills](https://github.com/travisvn/awesome-claude-skills) — Curated directory of Claude Skills, tools, and resources. Skills use a progressive disclosure architecture (metadata scan → full instructions → bundled resources) for token efficiency. <!-- tags: skills, claude, curated-list, community -->
+- [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) — Curated list of skills, hooks, slash-commands, agent orchestrators, and plugins for Claude Code. Multiple browsing styles (awesome, extra, classic, flat). <!-- tags: curated-list, claude-code, skills, plugins, community, open-source -->
+- [claude-code-ultimate-guide](https://github.com/FlorianBruniaux/claude-code-ultimate-guide) — Comprehensive guide from beginner to power user: 228 templates, 271-question quiz, 41 architecture diagrams, security threat database (24 CVEs, 655 malicious skills tracked), and an installable MCP server for in-session access. <!-- tags: guide, claude-code, templates, security, workflows, community, open-source -->
+- [awesome-claude-plugins](https://github.com/quemsah/awesome-claude-plugins) — Automated tracker of Claude Code plugin adoption across GitHub. Indexes 11K+ repos with star counts and plugin counts, updated daily via n8n workflows. <!-- tags: plugins, claude-code, metrics, adoption, community, open-source -->
 
 ### OpenAI Codex
 
@@ -123,6 +127,9 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 #### Repos & Resources
 
 - [codex-cli-best-practice](https://github.com/shanraisshan/codex-cli-best-practice) — Comprehensive community guide with 47 tips for OpenAI Codex CLI: subagents, skills, workflows, and orchestration patterns. <!-- tags: best-practices, codex, tips, community, open-source -->
+- [awesome-codex-cli](https://github.com/RoggeOhta/awesome-codex-cli) — Curated list of 150+ tools, skills, subagents, plugins, and MCP servers for OpenAI Codex CLI. <!-- tags: curated-list, codex, tools, plugins, community, open-source -->
+- [awesome-codex-plugins](https://github.com/hashgraph-online/awesome-codex-plugins) — Curated list of Codex plugins, skills, and resources with a live registry at hol.org. <!-- tags: plugins, codex, curated-list, registry, community, open-source -->
+- [awesome-codex-skills](https://github.com/ComposioHQ/awesome-codex-skills) — Curated list of practical Codex skills for automating workflows across the Codex CLI and API. <!-- tags: skills, codex, workflows, community, open-source -->
 
 ### Google Gemini
 
@@ -130,7 +137,10 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 
 #### Repos & Resources
 
-- [Gemma](https://ai.google.dev/gemma/docs) — Google's open-weight model family (Gemma 4). Lightweight enough for local fine-tuning, 140+ languages, up to 256K context. Built on Gemini research. <!-- tags: open-weights, local, fine-tuning, google, multimodal -->
+- [Gemma](https://ai.google.dev/gemma/docs) — Google's open-weight model family (Gemma 4). Lightweight enough for local fine-tuning, 140+ languages, up to 256K context. <!-- tags: open-weights, local, fine-tuning, google, multimodal -->
+- [awesome-gemini-cli](https://github.com/Piebald-AI/awesome-gemini-cli) — Curated list of tools, extensions, frameworks, MCP servers, and resources for Gemini CLI. Covers interfaces, agent orchestration, SDKs, and API bridges. <!-- tags: curated-list, gemini-cli, tools, extensions, community, open-source -->
+- [Gemini CLI Tips](https://github.com/addyosmani/gemini-cli-tips) — ~30 pro-tips for effective agentic coding with Gemini CLI, by Addy Osmani (a Google engineering lead). <!-- tags: tips, best-practices, gemini-cli, community, open-source -->
+- [Gemini cookbook](https://github.com/google-gemini/cookbook) — Google's official collection of examples and guides demonstrating Gemini API best practices. <!-- tags: cookbook, examples, google, gemini, official -->
 
 ---
 
