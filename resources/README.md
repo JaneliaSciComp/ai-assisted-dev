@@ -138,7 +138,7 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 
 *How to help AI understand codebases too large for any context window.*
 
-### Hierarchical Maps (llms.txt / CLAUDE.md)
+### Hierarchical Maps
 
 *Human-curated indexes at multiple levels of detail that let agents navigate from summaries to specifics.*
 
