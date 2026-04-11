@@ -209,5 +209,3 @@ To add a resource, submit a PR adding an entry under the appropriate section usi
 ```markdown
 - [Resource Name](https://url) — One-line description. <!-- tags: relevant, tags -->
 ```
-
-For ratings and feedback, see the rating system *(coming soon)*.
