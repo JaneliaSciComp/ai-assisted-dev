@@ -164,11 +164,13 @@ A **harness** wraps a frontier model with everything it needs to do useful work:
 
 | UX Surface | What it's for | Claude | OpenAI | Google |
 |---|---|---|---|---|
-| **IDE** | Code in a familiar editor with AI inline | — | Copilot | Gemini Code Assist |
+| **IDE** | Code in a familiar editor with AI inline | IDE plugin | Copilot | Gemini Code Assist |
 | **CLI** | Interactive terminal sessions, agentic coding | Claude Code | Codex CLI | Gemini CLI |
 | **Desktop App** | Project sidebar, parallel sessions, diff review | Claude App | Codex App | — |
-| **Cloud Agent** | Async background tasks on your repos | — | Codex Cloud | — |
+| **Cloud Agent** | Async background tasks on your repos | Managed Agents / *Ultraplan | Codex Cloud | Jules |
 | **Chat / Web** | Conversation-first, paste code in and out | claude.ai | ChatGPT | Gemini |
+
+*Ultraplan (Claude) is just planning in a cloud agent with nicer web UI.
 
 Each vendor is converging on multiple surfaces — but the sweet spots differ.
 
