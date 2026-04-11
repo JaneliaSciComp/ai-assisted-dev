@@ -38,10 +38,10 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 
 *CLI tools where you give the AI a task and it works autonomously.*
 
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) — Anthropic's CLI agent for agentic coding with Claude. File editing, shell access, Git integration. `tags: cli, agentic, anthropic`
-- [Codex CLI](https://github.com/openai/codex) — OpenAI's open-source terminal coding agent built in Rust. `tags: cli, agentic, openai, open-source`
-- [Codex (Cloud)](https://openai.com/codex/) — OpenAI's cloud-based async coding agent with sandboxed environments. `tags: cloud, agentic, openai`
-- [Gemini CLI](https://github.com/google-gemini/gemini-cli) — Google's open-source terminal agent with Gemini 2.5 Pro. Free tier: 1K requests/day. `tags: cli, agentic, google, open-source, free`
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) — Anthropic's CLI agent for agentic coding with Claude. File editing, shell access, Git integration. `tags: cli, agentic, anthropic, claude`
+- [Codex CLI](https://github.com/openai/codex) — OpenAI's open-source terminal coding agent built in Rust. `tags: cli, agentic, openai, codex, open-source`
+- [Codex (Cloud)](https://openai.com/codex/) — OpenAI's cloud-based async coding agent with sandboxed environments. `tags: cloud-agents, openai, codex`
+- [Gemini CLI](https://github.com/google-gemini/gemini-cli) — Google's open-source terminal agent with Gemini 2.5 Pro. Free tier: 1K requests/day. `tags: cli, agentic, google, gemini, open-source, free`
 - [Aider](https://aider.chat/) — Open-source AI pair programming in the terminal. Works with multiple models. `tags: cli, open-source, multi-model`
 - [Pi](https://pi.dev/) — Minimal, extensible terminal coding agent by Mario Zechner. Works with 15+ AI providers, customizable via TypeScript extensions and skills. `tags: cli, agentic, open-source, multi-model, extensible`
 - [Amp](https://ampcode.com/) — Coding agent by Sourcegraph. CLI-based, pay-as-you-go with frontier models. `tags: cli, agentic, sourcegraph, multi-model`
@@ -58,9 +58,11 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 
 *Systems designed to work with minimal user interaction beyond specs or task descriptions.*
 
-- [Devin](https://devin.ai/) — AI software engineering agent by Cognition with web-based IDE for monitoring. Assigns tickets, writes code, opens PRs. `tags: cloud, agent, ide`
+- [Devin](https://devin.ai/) — AI software engineering agent by Cognition with web-based IDE for monitoring. Assigns tickets, writes code, opens PRs. `tags: cloud-agents, ide`
 - [OpenHands](https://github.com/All-Hands-AI/OpenHands) — Open-source platform for AI software agents. `tags: agent, open-source`
 - [mini-SWE-agent](https://github.com/SWE-agent/mini-swe-agent) — 100-line Python agent that solves GitHub issues. Successor to SWE-agent, scores >74% on SWE-bench verified. By Princeton/Stanford. `tags: agent, research, open-source, lightweight`
+- [Claude Code /autoplan](https://code.claude.com/docs/en/ultraplan) — Cloud planning agent that clones your local repo to an Anthropic-managed VM and produces an editable plan viewable via web page. 90-minute timeout; plans may need manual recovery if it expires. `tags: cloud-agents, anthropic, claude, planning, claude-code`
+- [Jules](https://jules.google/) — Google Labs cloud coding agent with tight GitHub integration. Assigns tasks, writes code, opens PRs. [GitHub Action](https://github.com/google-labs-code/jules-action) `tags: cloud-agents, google, gemini, github`
 
 ### Spec-Driven Development
 
@@ -73,9 +75,9 @@ A curated collection of tools, frameworks, articles, and examples for AI-assiste
 
 *AI tools for UI design, prototyping, and full-stack app generation.*
 
-- [Google Stitch](https://stitch.withgoogle.com/) — AI-native UI design canvas from Google Labs. Voice-driven "vibe design," generates HTML/CSS/Tailwind, exports to Figma. Free. `tags: design, ui, google, free`
-- [Antigravity](https://aistudio.google.com/) — Full-stack coding agent in Google AI Studio. Turns text prompts into production-ready web apps with persistent data, auth, and external services. `tags: full-stack, google, cloud, agent`
-- [Firebase Studio](https://firebase.studio/) — Google's app prototyping agent. Natural language, mockups, or screenshots to working apps using popular framework templates. `tags: prototyping, google, cloud`
+- [Google Stitch](https://stitch.withgoogle.com/) — AI-native UI design canvas from Google Labs. Voice-driven "vibe design," generates HTML/CSS/Tailwind, exports to Figma. Free. `tags: design, ui, google, gemini, free`
+- [Antigravity](https://aistudio.google.com/) — Full-stack coding agent in Google AI Studio. Turns text prompts into production-ready web apps with persistent data, auth, and external services. `tags: full-stack, google, gemini, cloud`
+- [Firebase Studio](https://firebase.studio/) — Google's app prototyping agent. Natural language, mockups, or screenshots to working apps using popular framework templates. `tags: prototyping, google, gemini, cloud`
 
 ### Sandboxing & Containment
 
