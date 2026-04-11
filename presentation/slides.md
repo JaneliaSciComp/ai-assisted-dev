@@ -819,6 +819,75 @@ h1 { margin-bottom: 0.2em; }
 </style>
 
 ---
+
+# Providing Large Codebase Context to AI
+
+Two dominant patterns for helping AI understand codebases too large for any context window:
+
+<div class="flex gap-6 mt-2">
+<div class="flex-1">
+
+<div class="text-lg font-bold">RAG (Retrieval-Augmented Generation)</div>
+
+Embed code chunks as vectors, retrieve by semantic similarity at query time.
+
+Used by: GitHub Copilot (code search + RAG), Augment Code (knowledge graph + RAG)
+
+<div class="my-1"><span class="text-green-600">✓</span> Automated — no human curation needed</div>
+<div class="my-1"><span class="text-green-600">✓</span> Scales to large, changing codebases</div>
+<div class="my-1"><span class="text-red-500">✗</span> Chunking destroys structural relationships</div>
+<div class="my-1"><span class="text-red-500">✗</span> Finds *similar-looking* code, not *architecturally-related* code</div>
+
+</div>
+<div class="flex-1">
+
+<div class="text-lg font-bold">Hierarchical Maps (llms.txt / CLAUDE.md)</div>
+
+Human-curated indexes at multiple levels of detail. Agent navigates from summaries to specifics.
+
+Used by: Claude Code (docs map), llmstxt.org standard, CLAUDE.md files
+
+<div class="my-1"><span class="text-green-600">✓</span> Preserves structure and relationships</div>
+<div class="my-1"><span class="text-green-600">✓</span> Agent navigates purposefully, not blindly</div>
+<div class="my-1"><span class="text-red-500">✗</span> Requires curation and maintenance</div>
+<div class="my-1"><span class="text-red-500">✗</span> Coverage depends on author effort</div>
+
+</div>
+</div>
+
+<div class="flex justify-end">
+<svg viewBox="0 0 500 90" xmlns="http://www.w3.org/2000/svg" class="mt-1" style="width: 55%;">
+  <defs>
+    <marker id="ah10" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#666"/>
+    </marker>
+  </defs>
+  <!-- Map hierarchy: Root Index → Summaries → Full Code -->
+  <rect x="5" y="12" width="120" height="36" rx="6" fill="#e0e7ff" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="65" y="28" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Root Index</text>
+  <text x="65" y="40" font-family="sans-serif" font-size="8px" fill="#555" text-anchor="middle">titles + links</text>
+  <line x1="125" y1="30" x2="163" y2="30" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah10)"/>
+  <rect x="165" y="12" width="140" height="36" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="235" y="28" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Repo Summaries</text>
+  <text x="235" y="40" font-family="sans-serif" font-size="8px" fill="#555" text-anchor="middle">headings + descriptions</text>
+  <line x1="305" y1="30" x2="343" y2="30" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#ah10)"/>
+  <rect x="345" y="12" width="140" height="36" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="415" y="28" font-family="sans-serif" font-size="10px" font-weight="bold" text-anchor="middle">Full Code / Docs</text>
+  <text x="415" y="40" font-family="sans-serif" font-size="8px" fill="#555" text-anchor="middle">on demand</text>
+  <text x="250" y="75" font-family="sans-serif" font-size="9px" fill="#555" text-anchor="middle" font-style="italic">Maps: progressive detail — agent reads only what it needs</text>
+</svg>
+</div>
+
+<div class="text-xs opacity-50 absolute bottom-4 right-8">
+<a href="https://llmstxt.org">llmstxt.org</a> · <a href="https://simonwillison.net/2025/Oct/24/claude-code-docs-map/">Simon Willison on Claude Code's docs map</a> · <a href="https://code.claude.com/docs/en/claude_code_docs_map.md">Claude Code docs map</a>
+</div>
+
+<style scoped>
+p, li { font-size: 0.82em; line-height: 1.35; margin: 0.15em 0; }
+h1 { margin-bottom: 0.1em; }
+</style>
+
+---
 layout: section
 ---
 

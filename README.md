@@ -2,6 +2,8 @@
 
 Companion materials for a survey talk on AI-assisted software development, covering harnesses and frontier models, common approaches, and extraordinary examples of AI-accelerated coding.
 
+[A catalog of resources](resources/README.md), similar to Awesome lists, is available and free to be updated.
+
 ## Repository Layout
 
 ```
